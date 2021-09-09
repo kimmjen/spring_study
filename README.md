@@ -1,5 +1,9 @@
 # 1조 Spring Study
----
+
+
+**[SpringBoot 강좌 - 개념정리](https://www.youtube.com/playlist?list=PL93mKxaRDidG_OIfRQ4nztPQ13y74lCYg)**
+
+[markdown 기본정리](https://ansohxxn.github.io/blog/markdown/)
 
 해당 날짜 매주 수, 토요일(수요일이 오프날이면, 화요일) 저녁 8시
 
