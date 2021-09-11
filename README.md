@@ -3,7 +3,7 @@
 
 <!-- **[SpringBoot 강좌 - 개념정리](https://www.youtube.com/playlist?list=PL93mKxaRDidG_OIfRQ4nztPQ13y74lCYg){: target="_blank"}** -->
 
-**<a herf="https://www.youtube.com/playlist?list=PL93mKxaRDidG_OIfRQ4nztPQ13y74lCYg" target="_blank">SpringBoot 강좌 - 개념정리</a>**
+**<a href="https://www.youtube.com/playlist?list=PL93mKxaRDidG_OIfRQ4nztPQ13y74lCYg" target="_blank">SpringBoot 강좌 - 개념정리</a>**
 
 <a href="https://ansohxxn.github.io/blog/markdown/" target="_blank">MarkDown 기본정리</a>
 <!-- [markdown 기본정리](https://ansohxxn.github.io/blog/markdown/){: target="_blank"} -->
