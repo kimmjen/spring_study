@@ -1,0 +1,95 @@
+body {
+    font-family: 'Nanum Pen Script', cursive;    
+    margin: 0;
+    height: 0;
+}
+
+.title {
+    width: 100%;
+    max-width: 100%;
+
+}
+
+/* palette color */
+.palette {
+    background-color: white;
+}
+
+/* topMenu */
+.topMenu {
+    position: absolute;
+    height: 100px;
+}
+.topMenu ul li {
+    list-style: none;
+    color: slategray;
+    float: right;
+    align-items:flex-end;
+    background-color: rgb(189, 189, 189);
+    border-radius: 15px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.topMenu .item {
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100px;
+}
+
+.topMenu #content {
+}
+
+/*================================== color1 ==================================*/
+.palette .color1 {
+    background-color: rgb(241, 238, 223);
+    height: 500px;
+}
+
+.color1 .text {
+    width: 70%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 500px;
+}
+
+.color1 .logo {
+    width: 30%;
+    height: 100%;
+    float: right;
+    box-sizing: border-box;
+}
+
+/* movie_logo */
+.movie_logo {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 100%;
+    float: right;
+}
+/*================================== color2 ==================================*/
+.palette .color2 {
+    background-color: rgb(223, 193, 157);
+}
+
+.palette .color3 {
+    background-color: rgb(107, 83, 57);
+}
+
+.palette .color4 {
+    background-color: rgb(153, 139, 156);
+}
+
+.palette .color5 {
+    background-color: rgb(88, 129, 27);
+}
+
+.palette .color6 {
+    background-color: rgb(222, 185, 130);
+}
+
