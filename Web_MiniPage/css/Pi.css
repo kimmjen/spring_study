@@ -1,0 +1,67 @@
+body {
+  background-color: rgb(231, 230, 218);
+}
+p {
+  font-weight: 700;
+}
+.intro h1 {
+  margin: 0;
+}
+.custum-nav li {
+  border: 2px solid rgb(179, 179, 179);
+  border-radius: 10px;
+}
+.container {
+  position: relative;
+  z-index: 1;
+}
+.container:after {
+  background-image: url("https://cdn.pixabay.com/photo/2016/11/17/23/29/programming-1832991_960_720.png");
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  z-index: -1;
+}
+.intro {
+  background-color: rgba(0, 0, 0, 0.493);
+  height: 100px;
+  margin: auto;
+  text-align: center;
+}
+.intro h1 {
+  padding-top: 20px;
+  color: white;
+}
+li {
+  font-size: 17px;
+}
+
+.content h3 {
+  font-weight: 700;
+}
+.content li {
+  font-size: 20px;
+}
+.content .d-1 .explain_intro {
+  font-size: 20px;
+}
+.content li img,
+.content li a {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+.explain {
+  font-size: 14px;
+  color: black;
+}
+
+.content .d-1 .map {
+  margin-left: 15%;
+}
