@@ -149,6 +149,9 @@ sup {
   font-size: 15px;
   margin: 10px;
 }
+.header-links .link:hover {
+  background-color: gray;
+}
 @media only screen and (min-width: 550px) {
   .header-links .link {
     font-size: 20px;
