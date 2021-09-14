@@ -1,0 +1,230 @@
+body {
+    font-family: 'Nanum Pen Script', cursive;    
+    margin: 0;
+    height: 0;
+}
+
+.title {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* palette color */
+.palette {
+    background-color: white;
+}
+
+/* topMenu */
+.topMenu {
+    position: absolute;
+    height: 300px;
+}
+.topMenu ul li {
+    list-style: none;
+    color: slategray;
+    float: right;
+    align-items:flex-end;
+    background-color: rgb(189, 189, 189);
+    border-radius: 15px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.topMenu .item {
+    text-decoration: none;
+    font-size: 40px;
+    color: white;
+    display: block;
+    width: 300px;
+}
+
+/*================================== color1 ==================================*/
+.palette .color1 {
+    background-color: rgb(241, 238, 223);
+    height: 500px;
+}
+
+.color1 .text {
+    width: 70%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 500px;
+}
+
+.color1 .logo {
+    width: 30%;
+    height: 100%;
+    float: right;
+    box-sizing: border-box;
+}
+
+/* movie_logo */
+.movie_logo {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 100%;
+    float: right;
+}
+/*================================== color2 ==================================*/
+.palette .color2 {
+    background-color: rgb(223, 193, 157);    
+    height: 500px;
+
+}
+
+.color2 .text2 {
+    width: 70%;
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 100px;
+}
+
+.color2 .logo2 {
+    width: 30%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.movie_logo2 {
+    width:fit-content;
+    height: 500px;
+    max-width: 500px;
+    max-height: 100%;
+    float: left;
+}
+
+/*================================== color3 ==================================*/
+
+.palette .color3 {
+    background-color: rgb(107, 83, 57);
+    height: 500px;
+}
+
+.color3 .text3 {
+    width: 70%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 500px;
+}
+
+.color3 .logo3 {
+    width: 30%;
+    height: 100%;
+    float: right;
+    box-sizing: border-box;
+}
+
+/* movie_logo */
+.movie_logo3 {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 100%;
+    padding-left: 100px;
+}
+
+/*================================== color4 ==================================*/
+.palette .color4 {
+    background-color: rgb(153, 139, 156);
+    height: 500px;
+}
+
+.color4 .text4 {
+    width: 70%;
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 100px;
+}
+
+.color4 .logo4 {
+    width: 30%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.movie_logo4 {
+    width:fit-content;
+    height: 500px;
+    max-width: 500px;
+    max-height: 100%;
+    float: left;
+}
+
+/*================================== color5 ==================================*/
+.palette .color5 {
+    background-color: rgb(88, 129, 27);
+    height: 500px;
+}
+
+.color5 .text5 {
+    width: 70%;
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 500px;
+}
+
+.color5 .logo5 {
+    width: 30%;
+    height: 100%;
+    float: right;
+    box-sizing: border-box;
+}
+
+/* movie_logo */
+.movie_logo5 {
+    width: auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 100%;
+    padding-left: 100px;
+}
+
+/*================================== color6 ==================================*/
+.palette .color6 {
+    background-color: rgb(222, 185, 130);
+    height: 500px;
+}
+
+.color6 .text6 {
+    width: 70%;
+    float: right;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 160px;
+    padding-left: 100px;
+}
+
+.color6 .logo6 {
+    width: 30%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.movie_logo6 {
+    width:fit-content;
+    height: 500px;
+    max-width: 500px;
+    max-height: 100%;
+    float: left;
+}
+
