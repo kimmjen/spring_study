@@ -9,7 +9,6 @@
 }
 
 /* logo : Portfolio */
-
 .logo1, .logo2, .logo3{
     color: white;
     text-shadow: 2px 2px 2px orange;
@@ -17,6 +16,13 @@
     font-weight: bolder; 
     padding-left: 50px;
 }
+
+/* draw line */
+.menuhr {
+    border-top: 1px solid gray;
+    border-bottom: 2px solid orange;
+}
+
 
 /* draw logo */
 .logo1 {
@@ -46,6 +52,7 @@ body {
 
 /* topMenu */
 .topMenu {
+    position: fix;
     height: 100px;
 }
 
@@ -76,6 +83,10 @@ body {
     text-align: center; 
 }
 
+.textbox {
+    background-color: salmon;
+}
+
 .up_text {
     text-align: center;
 }
@@ -96,13 +107,32 @@ body {
     font-weight: bolder;
 }
 
+/* aboutMe */
+.contents1{
+    width: 100%;
+    height: 1000px;
+    position: relative;
+    margin-top: 0%;
+    opacity: 1;
+}
+
+.contents2 {
+    width: 100%;
+    height: 1000px;
+    background-color: #55d9b2;
+    position: relative;
+    margin-top: 0%;
+}
+
+/* contact */
 .contact {
     background-color: white;
     position: relative;
-    margin-top: 30%;
+    margin-top: 40%;
     border-radius: 50px;
     padding: 10px;
     padding-left: 50px;
+    text-align: center;
 }
 
 .contact p {
@@ -111,6 +141,11 @@ body {
 
 .contact h1 {
     text-shadow: 2px 2px 2px rgb(241, 241, 116);
+}
+
+.contact .github_image {
+    display: block;
+    margin: auto;
 }
 
 /* my picture  */
@@ -131,27 +166,31 @@ body {
     /* border-color:1px solid red; */
     background-color: slategray;
     color: white;
-    position: relative;
-    top: 300px;
-    left: 400px;
-    padding: 30px;
+    position: absolute;
+    left: 20%;
+    top: 400px;
+    /* left: 400px; */
+    text-align: left;
+
+    padding: 10px;
     border-radius: 50px;
+
 }
 
 .self_intro .self_01 {
-    width: 100%;
-    float: right;
+    font-size: 20px;
+    width: 70%;
+    /* float: left; */
     box-sizing: border-box;
-    text-align: left;
-    font-size: 20px;;
+    text-align: center;
+    padding: 10px;
 }
 
 .self_intro .self_02 {
-    float: left;
+    width: 30%;
     box-sizing: border-box;
-    margin-top: -90px;
+    margin-top: -80px;
 }
-
 
 footer { 
     position:fixed; 
@@ -167,5 +206,4 @@ footer {
 .self_intro a {
     text-decoration: none;
     color: white;
-
 }
