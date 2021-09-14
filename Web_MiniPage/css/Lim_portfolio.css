@@ -23,7 +23,6 @@
     border-bottom: 2px solid orange;
 }
 
-
 /* draw logo */
 .logo1 {
     position: absolute;
@@ -43,7 +42,6 @@
     left: 75px;
 }
 
-
 /* body */
 body {
     font-family: 'Nanum Gothic Coding', monospace;
@@ -52,10 +50,10 @@ body {
 
 /* topMenu */
 .topMenu {
-    position: fix;
+    position: fixed;
     height: 100px;
+    z-index: 1;
 }
-
 
 .topMenu ul li {
     list-style: none;
@@ -66,6 +64,10 @@ body {
     border-radius: 15px;
     vertical-align: middle;
     text-align: center;
+}
+
+.topMenu ul li :hover{
+    color: black;
 }
 
 .topMenu .item {
@@ -110,7 +112,7 @@ body {
 /* aboutMe */
 .contents1{
     width: 100%;
-    height: 1000px;
+    height: 800px;
     position: relative;
     margin-top: 0%;
     opacity: 1;
@@ -124,11 +126,20 @@ body {
     margin-top: 0%;
 }
 
+.contents2 h1 {
+    padding-top: 20px;
+    color: white;
+    text-align: center;
+    font-size: 50px;
+    text-shadow: 1px 1px 1px black;
+    
+}
+
 /* contact */
 .contact {
     background-color: white;
     position: relative;
-    margin-top: 40%;
+    margin-top: 3%;
     border-radius: 50px;
     padding: 10px;
     padding-left: 50px;
@@ -170,11 +181,12 @@ body {
     left: 20%;
     top: 400px;
     /* left: 400px; */
-    text-align: left;
-
-    padding: 10px;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 50px;
-
+    box-shadow:3px 3px 3px slategray;
 }
 
 .self_intro .self_01 {
@@ -189,7 +201,7 @@ body {
 .self_intro .self_02 {
     width: 30%;
     box-sizing: border-box;
-    margin-top: -80px;
+    margin-top: -260px;
 }
 
 footer { 
@@ -206,4 +218,32 @@ footer {
 .self_intro a {
     text-decoration: none;
     color: white;
+}
+
+.container {
+    padding: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.container .skills {
+    width: 330px;
+    height: 330px;
+    margin: 25px;
+    border: 3px solid #FFF;
+    box-sizing: border-box;
+    border-radius: 120px;
+    background-color: rgb(26, 35, 44);
+}
+
+.container .skills .image
+ {
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px
 }
