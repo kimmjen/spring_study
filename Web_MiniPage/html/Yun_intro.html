@@ -1,22 +1,160 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>윤현조</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="../css/Yun_intro.css">
+
+    <!--GSAP & ScrollToPlugin-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"
+        integrity="sha512-IQLehpLoVS4fNzl7IfH8Iowfm5+RiMGtHykgZJl9AWMgqx0AmJ6cRWcB+GaGVtIsnC4voMfm8f2vwtY+6oPjpQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollToPlugin.min.js"
+        integrity="sha512-nTHzMQK7lwWt8nL4KF6DhwLHluv6dVq/hNnj2PBN0xMl2KaMm1PM02csx57mmToPAodHmPsipoERRNn4pG7f+Q=="
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="main">
         <div class="content">
-            <div class="title">Junior Developer 윤현조</div>
-            <div class="github"></div>
+            <div class="title">Junior Developer 윤현조</div> <br><br><br>
+            <a target="_blank" href="https://github.com/Yunhyunjo">
+                <div class="github"></div>
+            </a> <br><br><br>
+            <a href="#intro"><span class="list">Introduce</span></a> &nbsp;&nbsp;&nbsp;
+            <a href="#skill"><span class="list">Skill</span></a> &nbsp;&nbsp;&nbsp;
+            <a href="#project"><span class="list">Project</span></a>
+        </div>
+        <div class="down">
+            <a href="#intro"></a>
+        </div>
+
+    </div>
+
+    <div class="intro" id="intro">
+        <div class="titles">Introduce</div>
+        <div class="container">
+            <div class="my">
+                <span class="name">윤현조</span><br><br>
+                <span class="developer">Junior Developer</span> <br><br>
+                <span class="email">gotqlc147@gmail.com</span> <br><br>
+                <span class="mygithub">Github :&nbsp;<a target="_blank" href="https://github.com/Yunhyunjo"><img
+                            class="imgGithub" src="../images/Yun/Yun_github01.png"></a></span>
+            </div>
+            <div class="image"><img class="myImg" src="../images/Yun/Yun.jpg"></div>
         </div>
     </div>
-    
+
+    <div class="skill" id="skill">
+        <div class="titles">Skill</div>
+        <div class="container">
+            <div class="images">
+                <div>
+                    <img class="skillImg" src="../images/Yun/Yun_C++.png">
+                    <img class="skillImg" src="../images/Yun/Yun_java.png">
+                    <img class="skillImg" src="../images/Yun/Yun_kotiln.jpg">
+                </div>
+                <br>
+                <div>
+                    <img class="skillImg" src="../images/Yun/Yun_android.jpg">
+                    <img class="skillImg" src="../images/Yun/Yun_git.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project" id="project">
+        <div class="titles">Project</div>
+        <div class="projects">
+            <div class="cozy">
+                <div class="mockup"><img class="myImg" src="../images/Yun/Yun_cozy01.png"></div>
+                <div class="explanation">
+                    <div class="project_name">
+                        <div><img class="logo" src="../images/Yun/Yun_cozy03.png"></div>
+                        <div class="app_name">cozy</div>
+                    </div>
+                    <div class="project_ex">바쁜 도심 속 휴식처, 공간과 경험을 파는 세상의 모든 독립서점 cozy는 독립 서점 플랫폼입니다.
+
+                        모든 독립서점의 정보와 그 독립서점에서 진행하는 활동들을 알 수 있습니다.
+
+                        또 간편후기를 통해 간단한 후기를 남기고 볼 수 있습니다.</div> <br>
+
+                    <div class="period">
+                        2020.08.11 ~2020.10.06 (기획 2명, 마케팅 1명, 디자이너 2명, 개발자 - Android 3명, ios 2명, sever 3명)
+                    </div>
+                    <div class="useskill">
+                        Stack : Android, Kotlin, git
+                    </div> <br>
+                    <div>
+                        <a target="_blank" href="https://github.com/yourCozy/cozy-Android"><img
+                            class="imgGithub" src="../images/Yun/Yun_github01.png">
+                    </div>
+
+                    <div> <a target="_blank" herf="https://play.google.com/store/apps/details?id=com.yourcozy.cozy">구글 플레이스토어 링크</a></div>
+
+                </div>
+            </div>
+
+
+            <div class="tripteller">
+                <div class="explanation">
+                    <div class="project_name">
+                        <div><img class="logo" src="../images/Yun/Yun_trip03.png"></div>
+                        <div class="app_name">Tripteller</div>
+                    </div>
+                    <div class="project_ex">나만의 맞춤 여행 가이드 트립텔러 <br>
+
+                        채팅을 통해 컨설턴트에게 내 취향에 맞는 여행 가이드를 제공 받을 수 있는 서비스입니다.</div> <br>
+
+                    <div class="period">
+                        2020.10.17 ~ ing (기획 1명,디자이너 1명, 개발자 -Android 2명, sever 2명)
+                    </div>
+                    <div class="useskill">
+                        Stack : Android, Kotlin, git
+                    </div> <br>
+                    <div>
+                        <a target="_blank" href="https://github.com/Trip-Teller/TripTeller-ANDROID/tree/hyunjo"><img
+                            class="imgGithub" src="../images/Yun/Yun_github01.png"></a>
+                    </div>
+                </div>
+                <div class="mockup"><img class="myImg" src="../images/Yun/Yun_trip01.png"></div>
+            </div>
+
+
+            <div class="trolly">
+                <div class="mockup"><img class="myImg" src="../images/Yun/Yun_trolly01.png"></div>
+                <div class="explanation">
+                    <div class="project_name">
+                        <div><img class="logo" src="../images/Yun/Yun_trolly03.png"></div>
+                        <div class="app_name">Trolly</div>
+                    </div>
+                    <div class="project_ex">길어지는 집콕생활에 즐거움을 더해줄 서비스 <br>
+
+                        MZ세대 롤코족들과 대학생을 위한 트렌드를 다양한 퀘스트로 경험하며 다채로운 집콕생활을 즐기도록 돕는 서비스입니다.</div> <br>
+
+                    <div class="period">
+                        2021.01.09 ~ 2021.01.10 (디자이너 1명,개발자 - Android 3명, sever 2명)
+                    </div>
+                    <div class="useskill">
+                        Stack : Android, Kotlin, git
+                    </div> <br>
+                    <div>
+                        <a target="_blank" href="https://github.com/koreahacks/2021-jcozy-Android"><img
+                            class="imgGithub" src="../images/Yun/Yun_github01.png">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

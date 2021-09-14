@@ -1,31 +1,237 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
 .main {
+    width: 100vw;
+    height: 100vh;
+    background-color: #1a222c;
+    font-weight: 600;
     position: relative;
 }
 
 .main .content {
-    width: 800px;
-    background-color: aquamarine;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    color: white;
+    margin: auto;
     position: absolute;
-    margin: auto
+    top: 35%;
+    transition: .4s;
 }
 
 .main .content .title {
-    background-color: aquamarine;
     font-size: 70px;
     margin: auto;
 }
 
-.main .content .github{
-    width: 40px;
-    height: 40px;
-    background-image: url(../images/github01.png);
-    background-color: violet;
+.main .content .github {
+    width: 80px;
+    height: 80px;
+    background-image: url(../images/Yun/Yun_github_logo_white.png);
     background-position: center;
-    background-repeat: no-repeat; /*원래는 이미지가 크기에 맞게 반복됨*/
-    background-size: 100%;
+    background-repeat: no-repeat;
+    /*원래는 이미지가 크기에 맞게 반복됨*/
+    background-size: 130%;
     margin: auto;
 }
 
 .main .content .github:hover {
-    background-image: url(../images/github02.png);
+    background-image: url(../images/Yun/Yun_github02.png);
+}
+
+.main .content .list {
+    font-size: 30px;
+    left: 30%;
+}
+
+.main .down {
+    width: 100%;
+    height: 50px;
+    color: white;
+    margin: auto;
+    position: absolute;
+    background-image: url(../images/Yun/Yun_white_down_arrow.png);
+    background-position: center;
+    position: absolute;
+    margin: auto;
+    bottom: 10%;
+    background-repeat: no-repeat;
+    background-size: 70px;
+    transition: .4s;
+}
+
+.intro {
+    width: 100vw;
+    height:fit-content;
+    position: relative;
+}
+
+.titles{
+    height: fit-content;
+    font-size: 40px;
+    margin: 100px auto;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+}
+
+.intro .container {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    margin: auto;
+    top: 150px;
+    justify-content: center;
+}
+
+.intro .my {
+    margin-right: 150px;
+    display: block;
+    margin: auto 0px;
+}
+
+.intro .my .name {
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.intro .my .developer,
+.intro .my .email,
+.intro .my .mygithub {
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+
+.intro .my .mygithub {
+    height: 30px;
+    position: relative;
+}
+
+.intro .my .mygithub .imgGithub {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    position: absolute;
+    bottom: 1%;
+}
+
+.image {
+    margin-left: 150px;
+}
+
+.myImg {
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+}
+
+.skill {
+    width: 100vw;
+    height:fit-content;
+    position: relative;
+}
+
+.skill .images {
+    text-align: center;
+}
+
+.skill .images .skillImg{
+    width: 10%;
+    height: 10%;
+    margin: 10px;
+}
+
+.project {
+    width: 100vw;
+    height:fit-content;
+}
+
+.project .projects {
+}
+
+.project .projects .cozy {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    top: 150px;
+}
+
+.project .projects .mockup .myImg {
+    width:40%;
+    height: fit-content;
+    display: block;
+    margin: auto;
+}
+
+.project .projects .explanation {
+    width: 400px;
+    line-height:30px;
+}
+
+.project .projects .explanation .project_name {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.project .projects .explanation .project_name .app_name{
+    margin: auto 0px;
+}
+
+.project .projects .explanation .project_ex {
+    width: 400px;
+    margin-top: 10px;
+    line-height: 30px;
+    display: block;
+    margin: auto 0px;
+}
+
+.project .projects .explanation .imgGithub {
+    width: 30px;
+    height: 30px;
+    margin: auto;
+    bottom: 1%;
+}
+
+.project .projects .explanation .imgGithub:hover {
+    transform: scale(1.5);
+}
+
+.project .projects .tripteller {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 180px;
+    left: 40%;
+}
+
+.project .projects .trolly {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    top: 150px;
+    margin-top: 180px;
+    margin-bottom: 100px;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
 }
