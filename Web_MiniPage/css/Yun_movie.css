@@ -1,0 +1,111 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main .container {
+    width: fit-content;
+    display: flex;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.main .container .poster .posterimg{
+    width: 400px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: .4s;
+    position: relative;
+}
+
+.main .container .poster:hover{
+    opacity: 30%;
+}
+
+.main .container .content {
+    margin-left: 100px;
+}
+
+
+.main .container .content .title {
+    font-size: xx-large;
+    font-weight: 700;
+    text-align: center;
+    margin: 50px;
+}
+
+.main .container .content .summary{
+    width: 750px;
+    font-size: xx-large;
+    font-weight: 700;
+    text-align: center;
+    margin: 100px auto 150px auto;
+    line-height: 50px;
+}
+
+.main .down {
+    width: 100%;
+    height: 50px;
+    color: white;
+    margin: auto;
+    position: absolute;
+    background-image: url(../images/arrow/down_arrow.png);
+    background-position: center;
+    position: absolute;
+    margin: auto;
+    bottom: 10%;
+    background-repeat: no-repeat;
+    background-size: 70px;
+    transition: .4s;
+}
+
+.character{
+    width: 100vw;
+}
+
+.character .mtitle{
+    font-size: xx-large;
+    font-weight: 700;
+    text-align: center;
+    margin: 150px;
+}
+
+.character .container {
+    display: flex;
+    margin: 100px 0 100px 0;
+}
+
+.character .container .img_char{
+    display: block;
+    margin: auto;
+}
+
+.character .container .info_char{
+    display: block;
+    margin: auto;
+}
+
+.name{
+    font-size: 80px;
+}
+
+.realname{
+    font-size: 20px;
+}
+
+.character .container .content{
+    width: 600px;
+    font-size: 30px;
+    margin-top: 80px;
+}
