@@ -5,8 +5,14 @@ body {
 }
 
 .title {
-    width: 100%;
-    max-width: 100%;
+    text-align: center;
+}
+
+.title_image {
+    width: 50%;
+    max-width: 50%;
+    border-radius: 10px;
+    z-index: -1;
 }
 
 /* palette color */
@@ -16,7 +22,7 @@ body {
 
 /* topMenu */
 .topMenu {
-    position: absolute;
+    position: fixed;
     height: 300px;
 }
 .topMenu ul li {
@@ -132,6 +138,7 @@ body {
     max-width: 500px;
     max-height: 100%;
     padding-left: 100px;
+    float: right;
 }
 
 /*================================== color4 ==================================*/
@@ -195,6 +202,7 @@ body {
     max-width: 500px;
     max-height: 100%;
     padding-left: 100px;
+    float: right;
 }
 
 /*================================== color6 ==================================*/
@@ -227,4 +235,3 @@ body {
     max-height: 100%;
     float: left;
 }
-
