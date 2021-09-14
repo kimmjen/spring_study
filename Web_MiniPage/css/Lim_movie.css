@@ -23,7 +23,7 @@ body {
 /* topMenu */
 .topMenu {
     position: fixed;
-    height: 300px;
+    height: 100px;
 }
 .topMenu ul li {
     list-style: none;
@@ -36,12 +36,16 @@ body {
     text-align: center;
 }
 
+.topMenu ul li :hover{
+    color: black;
+}
+
 .topMenu .item {
     text-decoration: none;
-    font-size: 40px;
+    font-size: 20px;
     color: white;
     display: block;
-    width: 300px;
+    width: 100px;
 }
 
 /*================================== color1 ==================================*/
@@ -65,6 +69,7 @@ body {
     height: 100%;
     float: right;
     box-sizing: border-box;
+    transform: scale(1);
 }
 
 /* movie_logo */
@@ -75,6 +80,7 @@ body {
     max-height: 100%;
     float: right;
 }
+    
 /*================================== color2 ==================================*/
 .palette .color2 {
     background-color: rgb(223, 193, 157);    
@@ -97,6 +103,7 @@ body {
     height: 100%;
     float: left;
     box-sizing: border-box;
+    transform: scale(1);
 }
 
 .movie_logo2 {
@@ -115,7 +122,7 @@ body {
 }
 
 .color3 .text3 {
-    width: 70%;
+    width: 75%;
     float: left;
     box-sizing: border-box;
     text-align: center;
@@ -125,10 +132,11 @@ body {
 }
 
 .color3 .logo3 {
-    width: 30%;
+    width: 25%;
     height: 100%;
     float: right;
     box-sizing: border-box;
+    transform: scale(1);
 }
 
 /* movie_logo */
@@ -162,6 +170,7 @@ body {
     height: 100%;
     float: left;
     box-sizing: border-box;
+    transform: scale(1);
 }
 
 .movie_logo4 {
@@ -193,6 +202,7 @@ body {
     height: 100%;
     float: right;
     box-sizing: border-box;
+    transform: scale(1);
 }
 
 /* movie_logo */
@@ -203,6 +213,7 @@ body {
     max-height: 100%;
     padding-left: 100px;
     float: right;
+    padding-top: 80px;
 }
 
 /*================================== color6 ==================================*/
@@ -226,6 +237,7 @@ body {
     height: 100%;
     float: left;
     box-sizing: border-box;
+    transform: scale(1);
 }
 
 .movie_logo6 {
@@ -234,4 +246,28 @@ body {
     max-width: 500px;
     max-height: 100%;
     float: left;
+}
+
+.moive_image img{
+    transition: all 0.2s linear;
+}
+.movie_image :hover img{
+	-webkit-transform:scale(1.2);
+	-moz-transform:scale(1.2);
+	-ms-transform:scale(1.2);	
+	-o-transform:scale(1.2);
+	transform:scale(1.2);
+}
+
+.logo{
+    transform: scale(1);
+}
+
+.logo :hover, .logo2 :hover, .logo3 :hover, .logo4 :hover, .logo5 :hover, .logo6 :hover{
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.color1, .color2, .color3, .color4, .color5, .color6  {
+overflow:hidden
 }
