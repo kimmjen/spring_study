@@ -1,0 +1,31 @@
+.main {
+    position: relative;
+}
+
+.main .content {
+    width: 800px;
+    background-color: aquamarine;
+    position: absolute;
+    margin: auto
+}
+
+.main .content .title {
+    background-color: aquamarine;
+    font-size: 70px;
+    margin: auto;
+}
+
+.main .content .github{
+    width: 40px;
+    height: 40px;
+    background-image: url(../images/github01.png);
+    background-color: violet;
+    background-position: center;
+    background-repeat: no-repeat; /*원래는 이미지가 크기에 맞게 반복됨*/
+    background-size: 100%;
+    margin: auto;
+}
+
+.main .content .github:hover {
+    background-image: url(../images/github02.png);
+}
