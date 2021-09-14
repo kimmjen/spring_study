@@ -21,4 +21,4 @@ function floatingObject(selector, delay, size) {
         }
     )
 }
-floatingObject('.down', 1, 30)
+floatingObject('.down', 1, 15)
