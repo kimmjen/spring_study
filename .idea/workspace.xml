@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="" />
+    <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web_MiniPage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Web_MiniPage/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Web_MiniPage/images/KIM/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -51,7 +54,10 @@
       <option name="presentableId" value="Default" />
       <updated>1631535807232</updated>
       <workItem from="1631535810927" duration="1971000" />
-      <workItem from="1631590855426" duration="1810000" />
+      <workItem from="1631590855426" duration="4218000" />
+      <workItem from="1631625430857" duration="1438000" />
+      <workItem from="1631627737654" duration="32000" />
+      <workItem from="1631662598926" duration="99000" />
     </task>
     <servers />
   </component>
@@ -68,5 +74,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
