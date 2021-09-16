@@ -60,3 +60,15 @@
 
 1조는 자기소개, 영화소개
 ```
+
+## 2-1 + 2021.09.15 스터디 강의 변경
+[spring+mysql+mybatis](https://kuzuro.blogspot.com/2019/08/1.html)
+```
+spring boot -> spring framework
+[spring+mysql+mybatis](https://kuzuro.blogspot.com/2019/08/1.html)
+```
+
+- 최대 #9강 까지 CRUD
+- 15강 이후 vue.js 학습또는 2-1 강의 이어서.
+**### 20일 저녁 8시**
+- 

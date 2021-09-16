@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/spring_kuzuro/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web_MiniPage/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Web_MiniPage/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +59,8 @@
       <workItem from="1631625430857" duration="1438000" />
       <workItem from="1631627737654" duration="32000" />
       <workItem from="1631662598926" duration="709000" />
-      <workItem from="1631666643568" duration="223000" />
+      <workItem from="1631666643568" duration="888000" />
+      <workItem from="1631750217865" duration="409000" />
     </task>
     <servers />
   </component>
