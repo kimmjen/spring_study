@@ -1477,3 +1477,1984 @@ public String getDelete(@RequestParam("bno") int bno) throws Exception {
     return "redirect:/board/list";
 }
 ```
+
+## 페이징 구현 1-1
+현재 임시데이터이며, 페이징 구현 처리하기에는 데이터수가 너무 적기 때문에 데이터를 복사하여 DB에 데이터넣기
+```sql
+insert into tbl_board(title, content, writer)
+select title, content, writer from tbl_board;
+```
+
+limit 10을 적용하여 아래에서부터 10개 데이터 보여주기
+```sql
+select
+	bno, title, content, writer, regDate, viewCnt
+from tbl_board
+order by bno desc
+	limit 10;
+```
+
+limit을 이용하여 
+```txt
+첫 페이지는 0번째부터 10개 이므로 (0, 10)
+두번째 페이지는 11번째부터 10개 이므로 (10, 10)
+세번째 페이지는 21번째부터 10개이므로 (20, 10)
+
+select count(bno) from tbl_board;
+- 게시물의 촛 갯수 구하는 쿼리
+```
+> 페이지 처리 조건
+> 1. 한 페이지에 출려될 게시물 갯수(10)개
+> 2. 페이징에 출력할 번호를 계산하기 위한 게시물의 총 갯수
+
+boardMapper.xml
+```xml
+<!-- 게시물 총 갯수 -->
+<select id="count" resultType="int">
+	select count(bno) from tbl_board;
+</select>
+```
+
+Mapper에 쿼리를 추가하였으면, DAO, Service, +Impl에도 코드 추가.
+
+boardDAO.Interface
+```java
+// 게시물 총 갯수
+public int count() throws Exception;
+```
+BoardDAOImpl.class
+```java
+// 게시물 총 갯수
+@Override
+public int count() throws Exception {
+	// TODO Auto-generated method stub
+	return sql.selectOne(namesapce + ".count");
+}
+```
+boardService.Interface
+```java
+// 게시물 총 갯수
+public int count() throws Exception;
+```
+boardServiceImpl.class
+```java
+// 게시물 총 갯수
+@Override
+public int count() throws Exception {
+	// TODO Auto-generated method stub
+	return dao.count();
+}
+```
+
+boardController.class
+```java
+// 게시물 총 갯수(목록) + 페이징 추가 
+@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+public void getListPage(Model model) throws Exception {
+	
+	List<BoardVO> list = null;
+	list = service.list();
+	model.addAttribute("lsit", list);
+}
+```
+
+listPage는 게시물 목록꺼에서 가져와서 value 값은 listPage 메서드로 지정.
+
+boardMapper.xml: 게시물 10개씩 출력하겠다는 쿼리추가
+```xml
+<!-- 게시물 목록과 페이징 -->
+<select id="listPage" parameterType="hashMap" resultType="com.kimmjen.domain.BoardVO">
+	select
+		bno, title, content, writer, regDate, viewCnt
+	from tbl_board
+	order by bno desc
+		limit #{displayPost}, ${postNum};
+</select>
+```
+
+mapper를 추가하였기 때문에 DAO, Service, + Impl에도 코드 추가
+
+boardDAO.interface
+```java
+// 게시물 목록과 페이징
+public List<BoardVO> listPage(int displayPost, int postNum) throws Exception;
+```
+boardDAOImpl.class
+```java
+// 게시물 목록과 페이징
+@Override
+public List<BoardVO> listPage(int displayPost, int postNum) throws Exception {
+	// TODO Auto-generated method stub
+	HashMap<String, Integer> data = new HashMap<String, Integer>();
+	
+	data.put("displayPost", displayPost);
+	data.put("postNum", postNum);
+	
+	return sql.selectList(namesapce + ".listPage", data);
+}
+```
+boardService.interface
+```java
+// 게시물 목록과 페이징
+public List<BoardVO> listPage(int displayPost, int postNum) throws Exception;
+```
+boardServiceImpl.class
+```java
+// 게시물 목록과 페이징
+@Override
+public List<BoardVO> listPage(int displayPost, int postNum) throws Exception {
+	// TODO Auto-generated method stub
+	return dao.listPage(displayPost, postNum);
+}
+```
+
+boardController.class
+```java
+// 게시물 총 갯수(목록) + 페이징 추가 
+@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
+	
+	// 게시물 총 갯수
+	int count = service.count();
+	
+	// 한 페이지에 출력할 게시물 갯수
+	int postNum = 10;
+	
+	// 하단 페이징 번호 ([ 게시물 총 갯수 % 한 페이지에 출력할 갯수] 의 올림)
+	int pageNum = (int)Math.ceil((double) count / postNum);
+	
+	// 출력할 게시물
+	int displayPost = (num - 1) * postNum;
+	
+	List<BoardVO> list = null;
+	list = service.listPage(displayPost, postNum);
+	model.addAttribute("list", list);
+	model.addAttribute("pageNum", pageNum);
+}
+```
+매개변수로 num는 페이지 번호.
+1. 게시물의 총 갯수를 구하고
+2. 한 페이지당 출력할 게시물 갯수 10개
+3. 하단에 표시할 페이징 번호의 갯수(소수점 올림)
+4. 현재 페이지를 기준으로 10개의 데이터를 출력
+
+listPage.jsp를 list.jsp를 복사 붙여넣기
+
+listPage.jsp
+```jsp
+...
+	</table>
+	<div>
+		<c:forEach begin="1" end="${pageNum }" var="num">
+			<span>
+				<a href="/board/listPage?num=${num }">${num }</a>
+			</span>
+		</c:forEach>
+	</div>
+</body>
+</html>
+```
+
+데이터가 만개이상일 때 목록페이지를 보면, 만개데이터가 보인다.<br>
+이것을 특정 갯수만큼의 페이징번호를 표시하거나, 중간을 생략하는 방법을 사용해야함.<br>
+이 작업은 이후에
+
+nav.jsp
+```jsp
+<li><a href="/board/listPage">글 목록(페이징)</a></li>
+```
+
+## 페이지 구현 1-2
+- 첫 번째 방법: 나열
+
+- 두 번째 방법: 페이지 번호 앞뒤로 특정 갯수 출력
+
+우선은 첫 번째 방법
+
+boardController.class
+```java
+// 출력할 게시물
+int displayPost = (num - 1) * postNum;
+
+//  첫번째방법------------------------------------------------------
+// 한번에 표시할 페이징 번호의 갯수
+int pageNum_cnt = 10;
+
+// 표시되는 페이지 번호 중 마지막 번호
+int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) * pageNum_cnt);
+
+// 표시되는 페이지 번호 중 첫번째 번호
+int startPageNum = endPageNum - (pageNum_cnt - 1);
+
+//  첫번째방법------------------------------------------------------
+```
+
+소수점 올림처리(ceil)<br>
+마지막 페이지 번호를 구하는 공식
+
+```
+마지막 페이지 번호 = ((올림)(현재 페이지 번호 / 한번에 표시할 페이지 번호의 갯수)) * 한 번에 표시할 페이지 번호의 갯수
+```
+
+시작 페이지 구하는 공식
+```
+시작 페이지 = 마지막 페이지 번호 - 한번에 표시할 페이지 번호의 갯수 + 1
+```
+
+BoardController.class에 마지막 번호 재계산 코드 입력
+```java
+// 마지막 번호 재계산
+int endPageNum_tmp = (int)(Math.ceil((double) count / (double) pageNum_cnt));
+
+if (endPageNum > endPageNum_tmp) {
+	endPageNum = endPageNum_tmp;
+}
+```
+
+그리고 페이지 간격을 넘어가는 이전과 다음 링크 표시<br>
+뷰에 출력하기 위해서
+
+Boardcontroller.class 전체코드
+```java
+package com.kimmjen.controller;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kimmjen.domain.BoardVO;
+import com.kimmjen.service.BoardService;
+
+@Controller
+@RequestMapping("/board/*")
+public class BoardController {
+	
+	@Inject
+	BoardService service;
+	
+	// 게시물 목록
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void getList(Model model) throws Exception {
+		
+		List<BoardVO> list = null;
+		list = service.list();
+		
+		model.addAttribute("list", list);
+		
+	}
+	
+	// 게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public void getWrite() throws Exception {
+		
+	}
+	
+	// 게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String postWrite(BoardVO vo) throws Exception {
+		
+		service.write(vo);
+		
+		return "redirect:/board/list";
+	}
+	
+	// 게시물 조회
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
+		
+		BoardVO vo = service.view(bno);
+		
+//		service.view(bno);
+		model.addAttribute("view",vo);
+	}
+	
+	// 게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void getModify(@RequestParam("bno") int bno, Model model) throws Exception {
+		
+		BoardVO vo = service.view(bno);
+		
+		model.addAttribute("view", vo);
+	}
+	
+	// 게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String postModify(BoardVO vo) throws Exception {
+		
+		service.modify(vo);
+		
+		return "redirect:/board/view?bno=" + vo.getBno();
+	}
+	
+	// 게시물 삭제
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String getDelete(@RequestParam("bno") int bno) throws Exception {
+		
+		service.delete(bno);
+		
+		return "redirect:/board/list";
+	}
+	
+	// 게시물 총 갯수(목록) + 페이징 추가 
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
+		
+		// 게시물 총 갯수
+		int count = service.count();
+		
+		// 한 페이지에 출력할 게시물 갯수
+		int postNum = 10;
+		
+		// 하단 페이징 번호 ([ 게시물 총 갯수 % 한 페이지에 출력할 갯수] 의 올림)
+		int pageNum = (int)Math.ceil((double) count / postNum);
+		
+		// 출력할 게시물
+		int displayPost = (num - 1) * postNum;
+		
+		//  첫번째방법------------------------------------------------------
+		// 한번에 표시할 페이징 번호의 갯수
+		int pageNum_cnt = 10;
+		
+		// 표시되는 페이지 번호 중 마지막 번호
+		int endPageNum = (int)(Math.ceil((double)num / (double)pageNum_cnt) * pageNum_cnt);
+		
+		// 표시되는 페이지 번호 중 첫번째 번호
+		int startPageNum = endPageNum - (pageNum_cnt - 1);
+		
+		// 마지막 번호 재계산
+		int endPageNum_tmp = (int)(Math.ceil((double) count / (double) pageNum_cnt));
+		
+		if (endPageNum > endPageNum_tmp) {
+			endPageNum = endPageNum_tmp;
+		}
+		
+		boolean prev = startPageNum == 1 ? false:true;
+		boolean next = endPageNum * pageNum_cnt >= count ? false:true;
+		
+		//  첫번째방법------------------------------------------------------
+		
+		
+		List<BoardVO> list = null;
+		list = service.listPage(displayPost, postNum);
+		model.addAttribute("list", list);
+		model.addAttribute("pageNum", pageNum);
+		
+		// 시작 및 끝 번호
+		model.addAttribute("startPageNum", startPageNum);
+		model.addAttribute("endPageNum", endPageNum);
+		
+		// 이전 및 다음
+		model.addAttribute("prev", prev);
+		model.addAttribute("next", next);
+	}
+	
+}
+```
+
+listPage.jsp
+```jsp
+</table>
+<div>
+	<c:if test="${prev }">
+		<span>[ <a href="/board/listPage?num=${startPageNum - 1 }">이전</a> ]</span>
+	</c:if>
+	<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+		<span>
+			<a href="/board/listPage?num=${num }">${num }</a>
+		</span>
+	</c:forEach>
+	
+	<c:if test="${next }">
+		<span>[ <a href="/board/listPage?num=${endPageNum - 1 }">다음</a> ]</span>
+	</c:if>
+	
+	<%-- <c:forEach begin="1" end="${pageNum }" var="num">
+		<span>
+			<a href="/board/listPage?num=${num }">${num }</a>
+		</span>
+	</c:forEach> --%>
+</div>
+```
+
+boardController.class
+```java
+// 이전 및 다음
+model.addAttribute("prev", prev);
+model.addAttribute("next", next);
+
+// 현재 페이지
+model.addAttribute("select", num);
+```
+
+listPage.jsp
+```jsp
+<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+	<span>
+		<c:if test="${select != num }">
+			<a href="/board/listPage?num=${num }">${num }</a>
+		</c:if>
+		
+		<c:if test="${select == num }">
+			<b>${num }</b>
+		</c:if>
+		<%-- <a href="/board/listPage?num=${num }">${num }</a> --%>
+	</span>
+</c:forEach>
+```
+
+반복문 중간에 조건을 넣어서, select의 값이 num 과 다를 경우 링크를 그대로 출력하고 select의 값이 num 과 같은 경우 링크가 아닌 굵은 글자로 출력
+
+## 페이지 구현 1-3
+
+복잡하고 난잡하니 깔끔하게 만들기<br>
+
+com.kimmjen.domain 패키지에 Page.class 만들기
+```java
+package com.kimmjen.domain;
+
+public class Page {
+	
+	// 현재 페이지 번호
+	private int num;
+	
+	// 게시물 총 갯수
+	private int count;
+	
+	// 한 페이지에 출력할 게시물 갯수
+	private int postNum = 10;
+	
+	// 하단 페이징 번호 ([ 게시물 총 갯수 % 한 페이지에 출력할 갯수 ]의 올림)
+	private int pageNum;
+	
+	// 출력할 게시물
+	private int displayPost;
+	
+	// 한번에 표시할 페이징 번호의 갯수
+	private int pageNumCnt = 10;
+	
+	// 표시되는 페이지 번호 중 마지막 번호
+	private int endPageNum;
+	
+	// 표시되는 페이지 번호 중 첫 번째 번호
+	private int startPageNum;
+	
+	// 다음 /이전 표시 여부
+	private boolean prev;
+	private boolean next;
+	
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	public int getCount() {
+		return count;
+	}
+	public int getPostNum() {
+		return postNum;
+	}
+	public int getPageNum() {
+		return pageNum;
+	}
+	public int getDisplayPost() {
+		return displayPost;
+	}
+	public int getPageNumCnt() {
+		return pageNumCnt;
+	}
+	public int getEndPageNum() {
+		return endPageNum;
+	}
+	public int getStartPageNum() {
+		return startPageNum;
+	}
+	public boolean getPrev() {
+		return prev;
+	}
+	public boolean getNext() {
+		return next;
+	}
+}
+```
+getter와 setter 설정을 하는데, setter는 2개 현재페이지 num과 게시물 총 갯수 count만 
+
+여기에 데이터 계산하는 메서드 추가, 게시물 총 갯수를 알고난 시점부터 계산이 가능하니까, setCount에서 메서드를 호출
+
+```jsp
+public void setCount(int count) {
+	this.count = count;
+	dataCalc();
+
+	...
+
+	public boolean getNext() {
+		return next;
+	}
+
+	private void dataCalc() {
+		
+		// 마지막 번호
+		endPageNum = (int)(Math.ceil((double) num / (double) pageNumCnt) * pageNumCnt);
+		
+		// 시작 번호
+		startPageNum = endPageNum - (pageNumCnt - 1);
+		
+		// 마지막 번호 재계산
+		int endPageNum_tmp = (int)(Math.ceil((double) count / (double) pageNumCnt));
+		
+		if (endPageNum > endPageNum_tmp) {
+			endPageNum = endPageNum_tmp;
+		}
+		
+		prev = startPageNum == 1 ? false:true;
+		next = endPageNum * pageNumCnt >= count ? false:true;
+		
+		displayPost = (num - 1) * postNum;
+	}
+}
+```
+
+그리고 BoardController.class는 아래와 같이 주석처리하고 Page클래스를 넣어준다.
+
+```java
+package com.kimmjen.controller;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.kimmjen.domain.BoardVO;
+import com.kimmjen.service.BoardService;
+
+@Controller
+@RequestMapping("/board/*")
+public class BoardController {
+	
+	@Inject
+	BoardService service;
+	
+	// 게시물 목록
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void getList(Model model) throws Exception {
+		
+		List<BoardVO> list = null;
+		list = service.list();
+		
+		model.addAttribute("list", list);
+		
+	}
+	
+	// 게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public void getWrite() throws Exception {
+		
+	}
+	
+	// 게시물 작성
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String postWrite(BoardVO vo) throws Exception {
+		
+		service.write(vo);
+		
+		return "redirect:/board/list";
+	}
+	
+	// 게시물 조회
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
+		
+		BoardVO vo = service.view(bno);
+		
+//		service.view(bno);
+		model.addAttribute("view",vo);
+	}
+	
+	// 게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void getModify(@RequestParam("bno") int bno, Model model) throws Exception {
+		
+		BoardVO vo = service.view(bno);
+		
+		model.addAttribute("view", vo);
+	}
+	
+	// 게시물 수정
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String postModify(BoardVO vo) throws Exception {
+		
+		service.modify(vo);
+		
+		return "redirect:/board/view?bno=" + vo.getBno();
+	}
+	
+	// 게시물 삭제
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String getDelete(@RequestParam("bno") int bno) throws Exception {
+		
+		service.delete(bno);
+		
+		return "redirect:/board/list";
+	}
+	
+	// 게시물 총 갯수(목록) + 페이징 추가 
+	@RequestMapping(value = "/listPage", method = RequestMethod.GET)
+	public void getListPage(Model model, @RequestParam("num") int num) throws Exception {
+		
+		Page page = new Page();
+
+		page.setNum(num);
+		page.setCount(service.count());
+		
+		List<BoardVO> list = null;
+		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+		
+		model.addAttribute("list", list);
+		model.addAttribute("pageNum", page.getPageNum());
+		
+		model.addAttribute("startPageNum", page.getStartPageNum());
+		model.addAttribute("endPageNum", page.getEndPageNum());
+		
+		model.addAttribute("prev", page.getPrev());
+		model.addAttribute("next", page.getNext());
+		
+		model.addAttribute("select", num);
+		/*
+		 * // 게시물 총 갯수 int count = service.count();
+		 * 
+		 * // 한 페이지에 출력할 게시물 갯수 int postNum = 10;
+		 * 
+		 * // 하단 페이징 번호 ([ 게시물 총 갯수 % 한 페이지에 출력할 갯수] 의 올림) int pageNum =
+		 * (int)Math.ceil((double) count / postNum);
+		 * 
+		 * // 출력할 게시물 int displayPost = (num - 1) * postNum;
+		 * 
+		 * // 첫번째방법------------------------------------------------------ // 한번에 표시할 페이징
+		 * 번호의 갯수 int pageNum_cnt = 10;
+		 * 
+		 * // 표시되는 페이지 번호 중 마지막 번호 int endPageNum = (int)(Math.ceil((double)num /
+		 * (double)pageNum_cnt) * pageNum_cnt);
+		 * 
+		 * // 표시되는 페이지 번호 중 첫번째 번호 int startPageNum = endPageNum - (pageNum_cnt - 1);
+		 * 
+		 * // 마지막 번호 재계산 int endPageNum_tmp = (int)(Math.ceil((double) count / (double)
+		 * pageNum_cnt));
+		 * 
+		 * if (endPageNum > endPageNum_tmp) { endPageNum = endPageNum_tmp; }
+		 * 
+		 * boolean prev = startPageNum == 1 ? false:true; boolean next = endPageNum *
+		 * pageNum_cnt >= count ? false:true;
+		 * 
+		 * // 첫번째방법------------------------------------------------------
+		 * 
+		 * 
+		 * List<BoardVO> list = null; list = service.listPage(displayPost, postNum);
+		 * model.addAttribute("list", list); model.addAttribute("pageNum", pageNum);
+		 * 
+		 * // 시작 및 끝 번호 model.addAttribute("startPageNum", startPageNum);
+		 * model.addAttribute("endPageNum", endPageNum);
+		 * 
+		 * // 이전 및 다음 model.addAttribute("prev", prev); model.addAttribute("next",
+		 * next);
+		 * 
+		 * // 현재 페이지 model.addAttribute("select", num);
+		 */
+	}
+	
+}
+
+```
+
+Page에 현재 페이지인 num, 게시물 총 갯수인 service.count()를 넣어주면 클래스 내부에서 계산<br>
+이렇게 계산된 데이터는 page.getDisplayPost()처럼 호출하여 사용
+
+page.jsp
+```jsp
+// -----------------페이지 데이터------------------------
+model.addAttribute("pageNum", page.getPageNum());
+
+model.addAttribute("startPageNum", page.getStartPageNum());
+model.addAttribute("endPageNum", page.getEndPageNum());
+
+model.addAttribute("prev", page.getPrev());
+model.addAttribute("next", page.getNext());
+// -----------------페이지 데이터------------------------		
+
+
+이 부분을
+
+model.addAttribute("page", page);
+```
+
+page의 데이터 전부를 뷰로 전달
+
+listPage.jsp
+```jsp
+<c:if test="${prev }">
+	<span>[ <a href="/board/listPage?num=${startPageNum - 1 }">이전</a> ]</span>
+</c:if>
+<c:forEach begin="${startPageNum }" end="${endPageNum }" var="num">
+	<span>
+		<c:if test="${select != num }">
+			<a href="/board/listPage?num=${num }">${num }</a>
+		</c:if>
+		
+		<c:if test="${select == num }">
+			<b>${num }</b>
+		</c:if>
+		<%-- <a href="/board/listPage?num=${num }">${num }</a> --%>
+	</span>
+</c:forEach>
+
+<c:if test="${next }">
+	<span>[ <a href="/board/listPage?num=${endPageNum - 1 }">다음</a> ]</span>
+</c:if>
+
+이 부분을
+
+<c:if test="${page.prev }">
+	<span>[ <a href="/board/listPage?num=${page.startPageNum - 1 }">이전</a>
+		]
+	</span>
+</c:if>
+<c:forEach begin="${page.startPageNum }" end="${page.endPageNum }" var="num">
+	<span> <c:if test="${select != num }">
+			<a href="/board/listPage?num=${num }">${num }</a>
+		</c:if> <c:if test="${select == num }">
+			<b>${num }</b>
+		</c:if> <%-- <a href="/board/listPage?num=${num }">${num }</a> --%>
+	</span>
+</c:forEach>
+
+<c:if test="${page.next }">
+	<span>[ <a href="/board/listPage?num=${page.endPageNum - 1 }">다음</a>
+		]
+	</span>
+</c:if>
+```
+
+## 검색 구현 1-1
+listPage -> listPageSearch 복사 붙여넣기<br>
+/board/listPage -> /board/listPageSearch
+```jsp
+<c:if test="${page.prev }">
+	<span>[ <a href="/board/listPage?num=${page.startPageNum - 1 }">이전</a>
+		]
+	</span>
+</c:if>
+<c:forEach begin="${page.startPageNum }" end="${page.endPageNum }" var="num">
+	<span> <c:if test="${select != num }">
+			<a href="/board/listPage?num=${num }">${num }</a>
+		</c:if> <c:if test="${select == num }">
+			<b>${num }</b>
+		</c:if> <%-- <a href="/board/listPage?num=${num }">${num }</a> --%>
+	</span>
+</c:forEach>
+
+<c:if test="${page.next }">
+	<span>[ <a href="/board/listPage?num=${page.endPageNum - 1 }">다음</a>
+		]
+	</span>
+</c:if>
+
+----------------------------------
+
+<c:if test="${page.prev }">
+	<span>[ <a href="/board/listPageSearch?num=${page.startPageNum - 1 }">이전</a>
+		]
+	</span>
+</c:if>
+<c:forEach begin="${page.startPageNum }" end="${page.endPageNum }" var="num">
+	<span> <c:if test="${select != num }">
+			<a href="/board/listPageSearch?num=${num }">${num }</a>
+		</c:if> <c:if test="${select == num }">
+			<b>${num }</b>
+		</c:if> <%-- <a href="/board/listPage?num=${num }">${num }</a> --%>
+	</span>
+</c:forEach>
+
+<c:if test="${page.next }">
+	<span>[ <a href="/board/listPageSearch?num=${page.endPageNum - 1 }">다음</a>
+		]
+	</span>
+</c:if>
+```
+
+boardController.class
+```java
+// 게시물 목록 + 페이징 추가 + 검색
+@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
+public void getListPageSearch(Model model, @RequestParam("num") int num) throws Exception {
+	
+	Page page = new Page();
+	
+	page.setNum(num);
+	page.setCount(service.count());
+	
+	List<BoardVO> list = null;
+	list = service.listPage(page.getDisplayPost(), page.getPostNum());
+	
+	model.addAttribute("list", list);
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+}
+```
+
+nav.jsp
+```jsp
+<li><a href="/board/listPageSearch?num=1">글 목록(페이징 + 검색)</a></li>
+```
+
+listPageSearch.jsp
+```jsp
+</c:if>
+		
+<div>
+	<select name="searchType">
+		<option value="title">제목</option>
+		<option value="content"내용></option>
+		<option value="title_content">제목 + 내용</option>
+		<option value="writer">작성자</option>
+	</select>
+	
+	<input type="text" name="keyword">
+	
+	<button type="button">검색</button>
+</div>
+```
+
+DB에서 데이터를 가져오도록 쿼리를 작성
+```sql
+select
+	bno, title, content, writer, regDate, viewCnt
+from tbl_board
+where title = "test title";
+
+위 쿼리는 title이 일치할때만 가져오게 된다.
+따라서
+
+select
+	bno, title, content, writer, regDate, viewCnt
+from tbl_board
+where title like '%test%';
+
+like '%검색어%';  %가 앞이나 뒤에 다른 문자열이 있을 수 있다는 의미
+
+
+select
+	bno, title, content, writer, regDate, viewCnt
+from tbl_board
+where title like '%test%'
+or content like '%수정된%';
+
+제목 또는 내용
+```
+
+검색어 구현을 위해 boardMapper.xml에 쿼리 추가
+
+```xml
+<!-- 게시물 목록과 페이징 -->
+<select id="listPage" parameterType="hashMap" resultType="com.kimmjen.domain.BoardVO">
+	select
+		bno, title, content, writer, regDate, viewCnt
+	from tbl_board
+	order by bno desc
+		limit #{displayPost}, ${postNum};
+</select>
+
+----복사 붙여넣기 수정 ListPageSearch
+
+<!-- 게시물 목록과 페이징 + 검색 -->
+<select id="listPageSearch" parameterType="hashMap" resultType="com.kimmjen.domain.BoardVO">
+	select
+		bno, title, content, writer, regDate, viewCnt
+	from tbl_board
+	
+	where title like '%#{keyword}%'
+	
+	order by bno desc
+		limit #{displayPost}, ${postNum};
+
+하지만 '%#{keyword}%' 이렇게 사용하면 '%'keyword'%' 데이터가 %키워드% 이렇게 되기 때문에
+문제를 해결하기 위해 concat을 이용한다.
+
+<!-- 게시물 목록과 페이징 + 검색 -->
+<select id="listPageSearch" parameterType="hashMap" resultType="com.kimmjen.domain.BoardVO">
+	select
+		bno, title, content, writer, regDate, viewCnt
+	from tbl_board
+	
+	where title like concat('%', #{keyword}, '%')
+	
+	where content like concat('%', #{keyword}, '%')
+	
+	where title like concat('%', #{keyword}, '%')
+		or content like concat('%', #{keyword}, '%')
+		
+	where writer like concat('%', #{keyword}, '%')
+	
+	order by bno desc
+		limit #{displayPost}, ${postNum};
+</select>
+
+모든 경우의 조건문을 사용하지만 이대로 는 사용 불가하기 때문에 매퍼에서 조건문을 사용
+
+searchType의 값에 따라 제목, 내용, 제목+내용, 작성자로 구분
+
+<if test='searchType.equals("title")'>
+	where title like concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("content")'>
+	where content like concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("title_content")'>
+	where title like concat('%', #{keyword}, '%')
+		or content like concat('%', #{keyword}, '%')
+</if>
+<if test='searchType.equals("writer")'>
+	where writer like concat('%', #{keyword}, '%')
+</if>
+```
+
+하지만 searchType과 keyword를 잡아오는 곳은 DAO, Service + Impl
+
+boardDAO.interface
+```java
+// 게시물 목록과 페이징 + 검색
+public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception;
+```
+boardDAOImpl.class
+```java
+// 게시물 목록과 페이징 + 검색
+@Override
+public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword)
+		throws Exception {
+	// TODO Auto-generated method stub
+	
+	HashMap<String, Object> data = new HashMap<String, Object>();
+	
+	data.put("displayPost", displayPost);
+	data.put("postNum", postNum);
+	
+	data.put("searchType", searchType);
+	data.put("keyword", keyword);
+	
+	return sql.selectList(namesapce + ".listPageSearch", data);
+}
+```
+boardService.interface
+```java
+// 게시물 목록과 페이징 + 검색
+public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword) throws Exception;
+```
+boardServiceImpl.class
+```java
+// 게시물 목록과 페이징 + 검색
+@Override
+public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword)
+		throws Exception {
+	// TODO Auto-generated method stub
+	return dao.listPageSearch(displayPost, postNum, searchType, keyword);
+}
+```
+
+BoardController.class<br>
+
+
+```java
+// 게시물 목록 + 페이징 추가 + 검색
+@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
+public void getListPageSearch(
+		Model model, 
+		@RequestParam("num") int num,
+		@RequestParam("searchType") String searchType,
+		@RequestParam("keyword") String keyword
+		) throws Exception {
+	
+	Page page = new Page();
+	
+	page.setNum(num);
+	page.setCount(service.count());
+	
+	List<BoardVO> list = null;
+//		list = service.listPage(page.getDisplayPost(), page.getPostNum());
+	list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	
+	model.addAttribute("list", list);
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+}
+
+매개변수에 추가, URL를 통해 searchType과 keyword를 받아낼수 있다.
+그리고 기존 list 주석처리후 service.listPageSearch로 바꾼다.
+하지만 @RequestParam에 searchType과 keyword는 데이터는 컨트롤러에서는 받지만 URL에서는 못받기 때문에 아래와 같이 수정한다.
+
+// 게시물 목록 + 페이징 추가 + 검색
+@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
+public void getListPageSearch(
+		Model model, 
+		@RequestParam("num") int num,
+		@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
+		@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword
+		) throws Exception {
+	
+	Page page = new Page();
+	
+	page.setNum(num);
+	page.setCount(service.count());
+	
+	List<BoardVO> list = null;
+	// list = service.listPage(page.getDisplayPost(), page.getPostNum());
+	list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	
+	model.addAttribute("list", list);
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+}
+```
+
+- value는 받고자할 데이터의 키
+- required는 해당 데이터의 필수여부
+- defaultvalue는 만약 데이터가 들어오지 않았을 경우 대신할 기본 값
+
+하지만 정상적인 작동이 아니라 매번 URL에 &searchType=title&keyword=테스트 입력하기 힘들 기 때문에<br>
+button 태그에 id=searchBtn추가하고 script도 추가해줍니다.
+
+listPageSearch.jsp
+```jsp
+	<div>
+		<select name="searchType">
+			<option value="title">제목</option>
+			<option value="content"내용></option>
+			<option value="title_content">제목 + 내용</option>
+			<option value="writer">작성자</option>
+		</select>
+		
+		<input type="text" name="keyword">
+		
+		<button type="button" id="searchBtn">검색</button>
+	</div>
+	
+</div>
+<script type="text/javascript">
+	document.getElementById("searchBtn").onclick = function() {
+		
+		let searchType = document.getElementByName("searchType")[0].value;
+		let keyword = documen.getElementByName("keyword")[0].value;
+		
+		console.log(searchType);
+		console.log(keyword);
+	}
+</script>
+```
+- id가 searchBtn인 html 엘리먼트에 클릭 이벤트가 발생하면, function() {} 내부의 코드가 실행
+- name이 searchType인 html엘리먼트 중 첫 번째([0])의 값을 변수(let) searchType 에 저장
+- name이 keyword html 엘리먼트 중 첫번째 ([0])의 값을 변수(let) keyword에 저장
+
+첫 번째([0])을 사용하는 이유는, html 엘리먼트에 사용되는 name속성은 2개 이상의 복수로 사용할 수 있기 때문에 document.getElementsByName()로 데이터를 가져오려면 배열로 가져오기 때문에 가장 첫 번째인 0번째 데이터를 가져오는 것
+
+위에 console.log값을 개발자도구로 확인 후 제대로 작동하면
+listPageSearch.jsp
+```jsp
+document.getElementById("searchBtn").onclick = function() {
+			
+	let searchType = document.getElementByName("searchType")[0].value;
+	let keyword = documen.getElementByName("keyword")[0].value;
+	
+	location.href = "/board/listPageSearch?num1" + "&searchType=" + searchType + "&keyword=" + keyword;
+	
+	// console.log(searchType);
+	// console.log(keyword);
+}
+
+이렇게 수정
+```
+
+- location.href = [URL] 해당 URL로 이동하는 기능
+- searchType은 선택한 검색 타입
+- keyword는 검색어가 들어가므로, '작성자'를 선택하고 '123'을 입력했다면 이동될 실제 URL은
+
+`/board/listPageSearch?num=1&searchType=writer&keyword=123` 이렇게 나올 것이다.
+
+## 검색 구현 1-2
+1. 페이지 번호를 클릭하여 페이지를 이동하면, 검색조건과 검색어가 없어짐
+	: 검색조건과 검색어를 유지할 수 잇는 코드가 없기 때문
+2. 검색겨과와 무고나하게 페이징이 생성됨
+	: 페이징 기능에서 전체 게시물 갯수를 가져올 때 조건을 두지 않아서
+
+boardController.class에 있는 page.setCount(service.count());가 페이징을 만들때 게시물의 갯수를 구하는 메서드
+
+```
+select count(bno) from tbl_board;
+
+아무런 조건없이 게시물 전체 갯수를가져옴
+
+select count(bno) from tbl_board
+where title like concat('%', '1', '%');
+
+조건을 넣어주면, 조건에 맞는 게시물만 가져오므로 갯수가 달라짐.
+```
+
+boardMapper.xml
+```xml
+<!-- 게시물 총 갯수 + 검색 적용 -->
+<select id="searchCount" parameterType="hashMap" resultType="int">
+	select count(bno) from tbl_board
+	
+	<if test='searchType.equals("title")'>
+		where title like concat('%', #{keyword}, '%')
+	</if>
+	<if test='searchType.equals("content")'>
+		where content like concat('%', #{keyword}, '%')
+	</if>
+	<if test='searchType.equals("title_content")'>
+		where title like concat('%', #{keyword}, '%')
+			or content like concat('%', #{keyword}, '%')
+	</if>
+	<if test='searchType.equals("writer")'>
+		where writer like concat('%', #{keyword}, '%')
+	</if>
+	
+</select>
+```
+
+조건을 추가하면서, searchType과 keyword를 받아야하므로 위에 파라미터 타입(HashMap)을 추가
+
+BoardDAO.interface
+```java
+// 게시물 총 갯수 + 검색적용
+public int searchCount(String searchType, String keyword) throws Exception;
+```
+BoardDAOImpl.class
+```java
+// 게시물 총 갯수 + 검색적용
+@Override
+public int searchCount(String searchType, String keyword) throws Exception {
+	// TODO Auto-generated method stub
+	HashMap<String, Obejct> data = new HashMap<String, Obejct>();
+	
+	data.put("searchType", searchType);
+	data.put("keyword", keyword);
+	
+	return sql.selectOne(namesapce + ".searchCount", data);
+}
+```
+BoardService.interface
+```java
+// 게시물 총 갯수 + 검색적용
+public int searchCount(String searchType, String keyword) throws Exception;
+```
+BoardServiceImpl.class
+```java
+// 게시물 총 갯수 + 검색적용
+@Override
+public int searchCount(String searchType, String keyword) throws Exception {
+	// TODO Auto-generated method stub
+	return dao.searchCount(searchType, keyword);
+}
+```
+
+BoardController.class 에서 중간 page
+```java
+page.setNum(num);
+// page.setCount(service.count());
+page.setCount(service.searchCount(searchType, keyword));
+
+// 검색조건, 검색어 유지
+model.addAttribute("searchType", searchType);
+model.addAttribute("keyword", keyword);
+
+```
+
+listPageSearch.jsp
+```jsp
+</c:if>
+
+<div>
+	<select name="searchType">
+		<option value="title">
+		<c:if test="${searchType eq 'title' }">selected</c:if>
+		제목
+		</option>
+		<option value="content"내용>
+		<c:if test="${searchType eq 'content' }">selected</c:if>
+		내용
+		</option>
+		<option value="title_content">
+		<c:if test="${searchType eq 'title_content' }">selected</c:if>
+		제목 + 내용
+		</option>
+		<option value="writer">
+		<c:if test="${searchType eq 'writer' }">selected</c:if>
+		작성자
+		</option>
+	</select>
+	
+	<input type="text" name="keyword" value="${page.keyword }">
+	
+	<button type="button" id="searchBtn">검색</button>
+</div>
+```
+
+`jstl문법 중 if문`
+- <c:if test="${page.searchType eq 'title'}">selected</c:if>
+	: test내부에는 조건이 들어가고, 이 조건이 참인 경우 <c:if></c:if> 사이에 있는 문자인 selected를 출력, 거짓인 경우 아무것도 출력하지 않는다.
+- ${page.searchType eq 'title'}
+	: page.searchType와 문자열 title가 같은지(equals) 확인, jstl에서는 .equals(); 대신 eq로 짧게 사용
+
+검색 조건을 제목으로 한 경우, 컨트롤러로 전송되는 searchType의 값은 title이며,<br>
+이 값이 다시 뷰(jsp)로 전송되면, searchType의 값과 같은 값을 가진 option 태그에 selected가 생겨서 선택된 상태<<br>
+
+이렇게 까지 했지만 첫번째 페이지만 적용되는 검색어 사이트.
+<br>
+다시 수정
+
+Page.class 에 변수와 메서드 추가.
+```java
+// 검색 타입과 검색어
+private String searchTypekeyword;
+
+public void setSearchTypeKeyword(String searchType, String keyword) {
+	
+	if (searchType.equals("") || keyword.equals("")) {
+		searchTypekeyword = "";
+	} else {
+		searchTypekeyword = "&searchType=" + searchType + "&keyword=" + keyword;
+	}
+}
+
+public String getSearchTypeKeyword() {
+	return searchTypekeyword;
+}
+
+=> setSearchTypeKeyword(); 메서드를 이용해, 검색조건(searchType)과 검색어(keyword)가 공란("")이 아니라면, url 뒤에 들어갈 `&searchTpye=[검색조건]&keyword=[검색어1]`
+```
+
+page.class에 setSearchTypeKeyword 메서드를 호출하며, 필요한 매개변수인 searchType, keyword 추가.
+```java
+// 검색타입과 검색어
+page.setSearchTypeKeyword(searchType, keyword);
+```
+
+listPageSearch.jsp 에서 prev와next 쪽에  ${page.searchTypeKeyword} 추가
+```java
+<div>
+	<c:if test="${page.prev }">
+		<span>[ <a href="/board/listPageSearch?num=${page.startPageNum - 1 }${page.searchTypeKeyword}">이전</a>
+			]
+		</span>
+	</c:if>
+	<c:forEach begin="${page.startPageNum }" end="${page.endPageNum }" var="num">
+		<span> <c:if test="${select != num }">
+				<a href="/board/listPageSearch?num=${num }${page.searchTypeKeyword}">${num }</a>
+			</c:if> <c:if test="${select == num }">
+				<b>${num }</b>
+			</c:if> <%-- <a href="/board/listPage?num=${num }">${num }</a> --%>
+		</span>
+	</c:forEach>
+
+	<c:if test="${page.next }">
+		<span>[ <a href="/board/listPageSearch?num=${page.endPageNum + 1 }${page.searchTypeKeyword}">다음</a>
+			]
+		</span>
+	</c:if>
+```
+
+But,<br>
+
+BoardController.class에서 setSearchTypeKeyword 메서드에 검색조건과 검색어가 사용되는데,<br>
+모델에다가 또 검색조건과 검색어를 넣을 필요가 없다. 그래서 수정
+
+BoardController.class
+```java
+// 게시물 목록 + 페이징 추가 + 검색
+@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
+public void getListPageSearch(
+		Model model, 
+		@RequestParam("num") int num,
+		@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
+		@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword
+		) throws Exception {
+	
+	Page page = new Page();
+	
+	page.setNum(num);
+//		page.setCount(service.count());
+//		page.setCount(service.searchCount(searchType, keyword));
+	
+	// 검색타입과 검색어
+	page.setSearchTypeKeyword(searchType, keyword);
+	
+	List<BoardVO> list = null;
+	// list = service.listPage(page.getDisplayPost(), page.getPostNum());
+	list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+	
+	model.addAttribute("list", list);
+	model.addAttribute("page", page);
+	model.addAttribute("select", num);
+	
+	// 검색조건, 검색어 유지
+//		model.addAttribute("searchType", searchType);
+//		model.addAttribute("keyword", keyword);
+}
+
+
+searchType, keyword 주석처리.
+```
+
+Page.class
+```java
+// 검색 타입과 검색어
+//	private String searchTypekeyword;
+//	
+//	public void setSearchTypeKeyword(String searchType, String keyword) {
+//		
+//		if (searchType.equals("") || keyword.equals("")) {
+//			searchTypekeyword = "";
+//		} else {
+//			searchTypekeyword = "&searchType=" + searchType + "&keyword=" + keyword;
+//		}
+//	}
+//	
+//	public String getSearchTypeKeyword() {
+//		return searchTypekeyword;
+//	}
+
+-----------------------
+
+// 검색어 수정
+public String getSearchTypeKeyword() {
+	
+	if (searchType.equals("") || keyword.equals("")) {
+		return "";
+	} else {
+		return "&searchType=" + searchType + "&keyword=" + keyword;
+	}
+}
+private String searchType;
+private String keyword;
+
+public String getSearchType() {
+	return searchType;
+}
+public void setSearchType(String searchType) {
+	this.searchType = searchType;
+}
+public String getKeyword() {
+	return keyword;
+}
+public void setKeyword(String keyword) {
+	this.keyword = keyword;
+}
+```
+
+searchType과 keyword는 평범하게 입력 받는 것이고, `.setSearchTypeKeyword()`는 입력받은 searchType과 keyword가 공란("")이라면 공란을 그대로 반환하고, 공란("")이 아닌 경우 url에 추가될 문자열을 반환.
+<br>
+
+BoardController.class에서 <br>
+page.setSearchTypeKeyword(searchType, keyword);<br>
+, model.addAttribute("searchType", searchType);<br>
+, model.addAttribute("keyword", keyword); 는 주석처리<br>
+```java
+Page page = new Page();
+		
+page.setNum(num);
+//		page.setCount(service.count());
+//		page.setCount(service.searchCount(searchType, keyword));
+
+// 검색타입과 검색어
+//		page.setSearchTypeKeyword(searchType, keyword);
+page.setSearchType(searchType);
+page.setKeyword(keyword);
+```
+
+listPageSearch.jsp에서 searchType과 keyword는 page에서 불러올 수 있으므로, 앞에 `.page`만 추가
+```jsp
+<div>
+	<select name="searchType">
+		<option value="title">
+		<c:if test="${searchType eq 'title' }">selected</c:if>
+		제목
+		</option>
+		<option value="content"내용>
+		<c:if test="${searchType eq 'content' }">selected</c:if>
+		내용
+		</option>
+		<option value="title_content">
+		<c:if test="${searchType eq 'title_content' }">selected</c:if>
+		제목 + 내용
+		</option>
+		<option value="writer">
+		<c:if test="${searchType eq 'writer' }">selected</c:if>
+		작성자
+		</option>
+	</select>
+	
+	<input type="text" name="keyword" value="${page.keyword }">
+	
+	<button type="button" id="searchBtn">검색</button>
+</div>
+
+-------------------------------
+
+<div>
+	<select name="searchType">
+		<option value="title">
+		<c:if test="${page.searchType eq 'title' }">selected</c:if>
+		제목
+		</option>
+		<option value="content"내용>
+		<c:if test="${page.searchType eq 'content' }">selected</c:if>
+		내용
+		</option>
+		<option value="title_content">
+		<c:if test="${page.searchType eq 'title_content' }">selected</c:if>
+		제목 + 내용
+		</option>
+		<option value="writer">
+		<c:if test="${page.searchType eq 'writer' }">selected</c:if>
+		작성자
+		</option>
+	</select>
+	
+	<input type="text" name="keyword" value="${page.keyword }">
+	
+	<button type="button" id="searchBtn">검색</button>
+</div>
+```
+
+## 댓글 기본 설정 및 조회 구현
+board폴더에 view.jsp 
+````java
+<!-- 댓글시작 -->
+	<hr />
+	<ul>
+		<li>
+		<div>
+			<p>첫번째 댓글 작성자</p>
+			<p>첫번째 댓글</p>
+		</div>
+	</li>
+	<li>
+		<div>
+			<p>두번째 댓글 작성자</p>
+			<p>두번째 댓글</p>
+		</div>
+	</li>
+	<li>
+		<div>
+			<p>세번째 댓글 작성자</p>
+			<p>세번째 댓글</p>
+		</div>
+	</li>
+	</ul>
+	<div>
+		<p>
+			<label>댓글 작성자</label> <input type="text">
+		</p>
+		<p>
+			<textarea rows="5" cols="5-"></textarea>
+		</p>
+		<p>
+			<button tpye"button">댓글 작성</button>
+		</p>
+	</div>
+	<!-- 댓글 끝 -->
+```
+
+댓글 테이블 만들기
+
+```java
+create table tbl_reply (
+	rno int not null auto_increment,
+    bno int not null,
+    writer varchar(30) not null,
+    content text not null,
+    regDate timestamp not null default now(),
+    primary key(rno, bno),
+    foreign key(bno) references tbl_board(bno)
+);
+
+commit;
+
+select * from tbl_reply;
+```
+
+댓글을 저장하기 위한 테이블인 tbl_reply를 생성
+
+- rno: 댓글의 고유 번호
+- bno: 댓글이 작성된 게시물의 번호
+
+댓글 테이블은 게시물 테이블에 종속된 하위 테이블이므로, 상위 테이블의 pk(Primary Key) 컬럼인 bno를 fk(foreign key)로 설정
+
+`SQL` insert, update, delete
+```sql
+// 댓글 테이블 생성
+create table tbl_reply (
+	rno int not null auto_increment,
+    bno int not null,
+    writer varchar(30) not null,
+    content text not null,
+    regDate timestamp not null default now(),
+    primary key(rno, bno),
+    foreign key(bno) references tbl_board(bno)
+);
+
+commit;
+
+// 확인
+select * from tbl_reply;
+
+select * from tbl_board
+order by bno desc;
+
+-- insert문
+insert into tbl_reply(bno, writer, content, regDate)
+	value(444, '댓글 작성자', '댓글 내용', sysdate());
+
+-- 수정문
+update tbl_reply set
+	writer = '댓글 작성자_수정',
+    content = '댓글 내용_수정'
+where rno = 1
+	and bno = 444;
+    
+-- delete
+delete from tbl_reply
+where rno = 1
+	and bno = 444;
+
+select * from tbl_reply;
+
+// insert
+insert into tbl_reply(bno, writer, content, regDate)
+	value(444, '댓글 작성자', '댓글 내용', sysdate());
+    
+// 댓글 확인
+select
+	rno, bno, writer, content, regDate
+from tbl_reply
+	where bno = 444;
+```
+
+ReplyVO 클래스생성.
+
+```java
+package com.kimmjen.domain;
+
+import java.util.Date;
+
+public class ReplyVO {
+	
+	/*
+	 * create table tbl_reply ( rno int not null auto_increment, bno int not null,
+	 * writer varchar(30) not null, content text not null, regDate timestamp not
+	 * null default now(), primary key(rno, bno), foreign key(bno) references
+	 * tbl_board(bno) );
+	 */
+	private int rno;
+	private int bno;
+	private String writer;
+	private String content;
+	private Date regDate;
+	
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
+	}
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Date getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
+	}
+}
+```
+
+댓글 조회는 게시물 번호(bno)만 이용하여 조회하되 결과는 ReplyVO의 형태로 반환되므로, 파라미터타입은 정수형(int)이며 리절트 타입은 ReplyVO입니다.
+<br>
+
+댓글 작성/수정/삭제는 게시물 번호(bno)와 댓글 번호(rno)가 모두 필요하며, 추가적으로 작성자(wrtier), 댓글내용(content), 작성 날짜(regDate)가 필요하며, 반환되는 데이터는 없으므로 파라미터타입은 ReplyVO이고 리절트타입은 없다.
+<br>
+
+replyMapper.xml 생성
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimmjen.mappers.reply">
+
+	<!-- 댓글 조회 -->
+	<select id="replyList" parameterType="int" resultType="com.kimmjen.domain.ReplyVO">
+		select
+			rno, bno, writer, content, regDate
+		from tbl_reply
+			where bno = #{bno};
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<select id="replyWrite" parameterType="com.kimmjen.domain.ReplyVO">
+		insert into tbl_reply(bno, writer, content, regDate)
+			value(${bno}, #{writer}, #{content}, #{regDate});
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<select id="replyModify" parameterType="com.kimmjen.domain.ReplyVO">
+		update tbl_reply set
+			writer = #{writer},
+			content = #{content}
+		where rno = #{rno}
+			and bno = #{bno};
+	</select>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="replyDelete" parameterType="com.kimmjen.domain.ReplyVO">
+		delete from tbl_reply
+		where rno = #{rno}
+			and bno = #{bno};
+	</delete>
+
+</mapper>
+````
+
+그리고 매퍼에 접속할 DAO(Date Obejct Access)를 생성<br>
+
+com.board.dao 패키지에 interface인 ReplyDAO생성
+
+ReplyDAO.interface
+```java
+package com.kimmjen.dao;
+
+import java.util.List;
+
+import com.kimmjen.domain.ReplyVO;
+
+public interface ReplyDAO {
+
+	// 댓글 조회
+	public List<ReplyVO> list(int bno) throws Exception;
+	
+	// 댓글 입력
+	public void write(ReplyVO vo) throws Exception;
+	
+	// 댓글 수정
+	public void modify(ReplyVO vo) throws Exception;
+	
+	// 댓글 삭제
+	public void delete(ReplyVO vo) throws Exception;
+}
+
+```
+
+ReplyDAOImpl.class
+```java
+package com.kimmjen.dao;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.kimmjen.domain.ReplyVO;
+
+@Repository
+public class ReplyDAOImpl implements ReplyDAO {
+	
+	@Inject
+	private SqlSession sql;
+	
+	private static String namespace = "com.kimmjen.mappers.reply";
+
+	// 댓글 조회
+	@Override
+	public List<ReplyVO> list(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList(namespace + ".replyList", bno);
+	}
+
+	// 댓글 작성
+	@Override
+	public void write(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert(namespace + ".replyWrite", vo);
+		
+		
+	}
+	
+	// 댓글 수정
+	@Override
+	public void modify(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.update(namespace + ".replyModify", vo);
+		
+	}
+
+	// 댓글 삭제
+	@Override
+	public void delete(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		sql.delete(namespace + ".replyDelete", vo);
+		
+	}
+
+}
+
+```
+
+ReplyService.interface
+```java
+package com.kimmjen.service;
+
+import java.util.List;
+
+import com.kimmjen.domain.ReplyVO;
+
+public interface ReplyService {
+
+	// 댓글 조회
+	public List<ReplyVO> list(int bno) throws Exception;
+	
+	// 댓글 입력
+	public void write(ReplyVO vo) throws Exception;
+	
+	// 댓글 수정
+	public void modify(ReplyVO vo) throws Exception;
+	
+	// 댓글 삭제
+	public void delete(ReplyVO vo) throws Exception;
+}
+
+```
+ReplyServiceImpl.class
+```java
+package com.kimmjen.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.kimmjen.dao.ReplyDAO;
+import com.kimmjen.domain.ReplyVO;
+
+
+@Service
+public class ReplyServiceImpl implements ReplyService {
+
+	@Inject
+	private ReplyDAO dao;
+	
+	// 댓글 조회
+	@Override
+	public List<ReplyVO> list(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.list(bno);
+	}
+
+	// 댓글 작성
+	@Override
+	public void write(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.write(vo);
+	}
+
+	// 댓글 수정
+	@Override
+	public void modify(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.modify(vo);
+	}
+
+	// 댓글 삭제
+	@Override
+	public void delete(ReplyVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		dao.delete(vo);
+	}
+}
+```
+
+ReplyController 클래스 생성
+```java
+
+```
+
+BoardController.class 에 추가 해주기
+<br>
+이유는 게시물을 읽어오면서 댓글도 같이 읽어오는 방식으로 진행하기 때문에
+
+```java
+@Inject
+private ReplyService replyService;
+
+...
+
+// 게시물 조회
+@RequestMapping(value = "/view", method = RequestMethod.GET)
+public void getView(@RequestParam("bno") int bno, Model model) throws Exception {
+	
+	BoardVO vo = service.view(bno);
+	
+//		service.view(bno);
+	model.addAttribute("view",vo);
+	
+	// 댓글 조회
+	List<ReplyVO> reply = null;
+	reply = replyService.list(bno);
+	model.addAttribute("reply", reply);
+}
+```
+
+
+view.jsp 수정 DB에서 값 받아오기
+```jsp
+<li>
+	<div>
+		<p>첫번째 댓글 작성자</p>
+		<p>첫번째 댓글</p>
+	</div>
+</li>
+<li>
+	<div>
+		<p>두번째 댓글 작성자</p>
+		<p>두번째 댓글</p>
+	</div>
+</li>
+<li>
+	<div>
+		<p>세번째 댓글 작성자</p>
+		<p>세번째 댓글</p>
+	</div>
+</li>
+
+...수정
+
+<c:forEach items="${reply }" var="reply">
+<li>
+	<div>
+		<p>${reply.writer } / ${reply.regDate }</p>
+		<p>${reply.content }</p>
+	</div>
+</li>
+</c:forEach>
+```
+
+반복문을 이용해서 값 받아오기<br>
+
+그리고 날짜 표기 바꾸기
+
+view.sjp
+```jsp
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+...
+
+<div>
+<p>${reply.writer } / <fmt:formatDate value="${reply.regDate }" pattern="yyyy-MM-dd"/> </p>
+<p>${reply.content }</p>
+</div>
+```
+
+## 댓글 작성 구현
+댓글 구성
+
+- rno: 댓글 고유 번호 -> 테이블을 생성할 때 설정한 auto_increment 값을 가지며 자동으로 증가되는 값
+- bno: 게시물 고유번호 -> 댓글을 작성할 때 조회중인 게시물의 고유번호 값
+- writer: 댓글 작성자 -> 직접작성
+- content: 댓글 내용 -> 직접작성
+- regDate: 댓글 작성 날짜 -> 쿼리문을 이용하여 넣어주는 값
+
+댓글 작성시 필요한 데이터
+
+- bno: 게시물 고유번호
+- writer: 댓글 작성자
+- content: 댓글 내용
+
+view.jsp 수정
+```jsp
+<form method="post" action="/reply/writer">
+	<p>
+		<label>댓글 작성자</label> <input type="text" name="writer">
+	</p>
+	<p>
+		<textarea rows="5" cols="50" name="content"></textarea>
+	</p>
+	<p>
+		<button type="submit">댓글 작성</button>
+	</p>
+</form>
+	<!-- <p>
+		<label>댓글 작성자</label> <input type="text">
+	</p>
+	<p>
+		<textarea rows="5" cols="5-"></textarea>
+	</p>
+	<p>
+		<buttontpye"button">댓글 작성</button>
+	</p> -->
+</div>
+```
+게시물 작성구현과 같은 post방식의 form이지만, action에 /reply/write가 있다.<br>
+form 내부의 데이터를 post형식으로 보내되, /reply/write의 경로로 보낸다는 걸 추측
+
+게시물 작성 구현에 action을 사용하지 않은 이유는 현재의 url로 데이터를 보내기 때문.
+
+```jsp
+<p>
+	+ <input tpye="hidden" name="bno" value="${view.bno }">  추가
+	<button type="submit">댓글 작성</button>
+</p>
+```
+
+input추가, hidden은 실제로 값은 담고있지만, 화면에 표시하지 않겠다.<br>
+
+ReaplyController.class
+
+```java
+// 댓글 작성
+@RequestMapping(value = "/write", method = RequestMethod.POST)
+public String postWrite(ReplyVO vo) throws Exception {
+	replyService.write(vo);
+	
+	return "redirect:/board/view?bno=" + vo.getBno();
+}
+```
+댓글 데이터 순서
+- 1. 게시물 조회 페이지에서 댓글 작성 후 등록
+- 2. /reply/write 에 해당되는 컨트롤러 데이터 전달
+- 3. service -> dao -> mapper를 통해 db에 데이터 등록
+- redirect:/board/view?bno= 로 인해 1번에서 조회 중이던 게시물로 이동
+

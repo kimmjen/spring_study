@@ -51,5 +51,34 @@ public class BoardServiceImpl implements BoardService {
 		dao.delete(bno);
 		
 	}
+
+	// 게시물 총 갯수
+	@Override
+	public int count() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.count();
+	}
+
+	// 게시물 목록과 페이징
+	@Override
+	public List<BoardVO> listPage(int displayPost, int postNum) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listPage(displayPost, postNum);
+	}
+
+	// 게시물 목록과 페이징 + 검색
+	@Override
+	public List<BoardVO> listPageSearch(int displayPost, int postNum, String searchType, String keyword)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return dao.listPageSearch(displayPost, postNum, searchType, keyword);
+	}
+
+	// 게시물 총 갯수 + 검색적용
+	@Override
+	public int searchCount(String searchType, String keyword) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.searchCount(searchType, keyword);
+	}
 	
 }
