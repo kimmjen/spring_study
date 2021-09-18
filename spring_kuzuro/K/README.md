@@ -2549,11 +2549,11 @@ listPageSearch.jsp
 	</div>
 	
 </div>
-<script type="text/javascript">
+<script>
 	document.getElementById("searchBtn").onclick = function() {
 		
-		let searchType = document.getElementByName("searchType")[0].value;
-		let keyword = documen.getElementByName("keyword")[0].value;
+		let searchType = document.getElementsByName("searchType")[0].value;
+		let keyword = document.getElementsByName("keyword")[0].value;
 		
 		console.log(searchType);
 		console.log(keyword);
@@ -2571,10 +2571,10 @@ listPageSearch.jsp
 ```jsp
 document.getElementById("searchBtn").onclick = function() {
 			
-	let searchType = document.getElementByName("searchType")[0].value;
-	let keyword = documen.getElementByName("keyword")[0].value;
+	let searchType = document.getElementsByName("searchType")[0].value;
+	let keyword = document.getElementsByName("keyword")[0].value;
 	
-	location.href = "/board/listPageSearch?num1" + "&searchType=" + searchType + "&keyword=" + keyword;
+	location.href = "/board/listPageSearch?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
 	
 	// console.log(searchType);
 	// console.log(keyword);
