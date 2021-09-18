@@ -19,6 +19,8 @@
 <img alt="" src="./resources/아이린1.png">
 
 <p>
+	<a href="/board/listPageSearch?num=1">글 목록(페이징 + 검색)</a>
+	<a href="/board/listPage?num=1">글 목록(페이징)</a>
 	<a href="./board/list">게시물 목록</a>
 	<a href="./board/write">게시물 작성</a>
 </p>
