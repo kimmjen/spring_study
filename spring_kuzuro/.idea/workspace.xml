@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94edd342-a2a0-4d11-bcfa-a3efc70c46dd" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/k_board/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/BoardApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/aop/LoggerAspect.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/aop/TransactionAspect.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/configuration/DBConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/configuration/MvcConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/constant/Method.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/controller/BoardController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/domain/BoardDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/domain/CommonDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/interceptor/LoggerInterceptor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/mapper/BoardMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/paging/Criteria.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/paging/PaginationInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/service/BoardService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/service/BoardServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/com/board/util/UiUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/log4jdbc.log4j2.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/mappers/BoardMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/mappers/CommonMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/animated.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/bordered-pulled.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/core.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/fixed-width.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/font-awesome.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/icons.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/larger.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/list.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/mixins.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/path.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/rotated-flipped.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/screen-reader.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/stacked.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/less/variables.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_animated.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_bordered-pulled.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_core.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_fixed-width.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_icons.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_larger.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_list.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_mixins.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_path.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_rotated-flipped.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_screen-reader.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_stacked.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/_variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/fonts/font-awesome/scss/font-awesome.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/bootstrap/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/plugin/mCustomScrollbar/mCSB_buttons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/scripts/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/scripts/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/static/scripts/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/fragments/body.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/fragments/common.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/fragments/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/layout/basic.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/view.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/board/write.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/main/templates/utils/message-redirect.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/test/com/board/BoardApplicationTests.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/k_board/bin/test/com/board/MapperTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/spring_kuzuro.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/spring_kuzuro.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/K/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/K/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K/.settings/org.eclipse.wst.common.project.facet.core.xml" beforeDir="false" afterPath="$PROJECT_DIR$/K/.settings/org.eclipse.wst.common.project.facet.core.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K/target/m2e-wtp/web-resources/META-INF/maven/com.kimmjen/controller/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/K/target/m2e-wtp/web-resources/META-INF/maven/com.kimmjen/controller/pom.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1yKVhJy7CdK7459lR9DnmGErarR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Board (1)" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="디폴트 작업">
+      <changelist id="94edd342-a2a0-4d11-bcfa-a3efc70c46dd" name="변경" comment="" />
+      <created>1632000420811</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1632000420811</updated>
+      <workItem from="1632000426049" duration="2076000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
