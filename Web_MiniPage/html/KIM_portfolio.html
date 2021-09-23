@@ -1,61 +1,445 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/KIM_portfolio.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
+
 <body>
-<div class="container">
-    <div class="main_img">
-        <img src="../images/KIM/img/KakaoTalk_20210914_010436499.jpg" alt="">
-    </div>
-    <div class="main_content">
-        <span class="name">김 제 민</span>
-        <span class="name_content">
-            빠르지 않게 느리지 않게 <br>
-            목적은 잃지 않게
-        </span>
-    </div>
-    <div class="skill_test">
-        <span class="skill_name">기술</span>
-        <ul>
 
-            <li class="skill_test language">
-                <img src="../images/KIM/img/java_original_wordmark_logo_icon_146459.png" alt="" style="width: 75px; height: 75px">
-            </li>
-            <li class="skill_test os">
-                <img src="../images/KIM/img/windows.png" alt="">
-            </li>
-            <li class="skill_test framework">
-                <img src="../images/KIM/img/spring.png" alt="">
-            </li>
-        </ul>
-    </div>
-    <!--    <div class="skill_name">-->
-    <!--        <span>기술</span>-->
-    <!--    </div>-->
-    <!--    <div class="skill">-->
+    <header class="kakao_head" data-tiara-layer="gnb"> 
+        <div class="kakaohead_top">
+            <div class="inner_head" data-tiara-layer="service">
+                <!-- <h1 class="tit_daum">
+                    
+                    <a href="/main" style="font-size: 10px;">메인으로 돌아가기</a>
+                </h1> -->
+                <!-- <strong class="screen_out">관련 서비스</strong> -->
+                <ul class="list_relservice">
+                    <div style="text-align: center; font-size: 72px;">
+                        KIMMJEN
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </header>
 
-    <!--        <div class="tech">-->
-    <!--            <h2>Language</h2>-->
-    <!--            <img src="./java_original_wordmark_logo_icon_146459.png" alt="" style="width: 75px; height: 75px;" >-->
-    <!--            <img src="" alt="">-->
-    <!--        </div>-->
-    <!--        <div class="tech">-->
-    <!--            <h2>Framework</h2>-->
-    <!--            <img src="./spring.png" alt="">-->
-    <!--            <img src="./springboot.png" alt="">-->
-    <!--        </div>-->
-    <!--        <div class="tech">-->
-    <!--            <h2>OS</h2>-->
-    <!--            <img src="./windows.png" alt="">-->
-    <!--        </div>-->
-    <!--    </div>-->
-</div>
+    <div class="kimmjen_wrap detail_type">
+        <hr class="hide">
+        <main class="kimmjen_content">
+            <article id="mainContent" class="kimmjen_article">
+                <div class="section_detail">
+                    <div class="box_bastic" data-tiara-layer="main">
+                        <!-- <div class="info_poster">
+                            <a href="./assets/image/KakaoTalk_20210914_010436499.jpg"></a>
+                        </div> -->
+                        <div class="info_poster">
+                            <a href="#photoId=1002035" class="thumb_img" data-tiara-layer="poster"
+                                data-tiara-copy="메인_포스터">
+                                <span class="bg_img"
+                                    style="background-image:url('../images/KIM/image/KakaoTalk_20210914_010436499.jpg')"></span>
+                            </a>
+                        </div>
+                        <div class="info_detail">
+                            <div class="detail_tit">
+                                <div class="detail_tit_fixed" aria-hidden="true">
+                                    <div class="inner_tit">
+                                        <span class="txt_tit">김제민</span>
+                                    </div>
+                                </div>
+                                <h3 class="tit_movie">
+                                    <span class="txt_tit">
+                                        김제민
+                                    </span>
+                                    <span class="txt_tag">
+                                    </span>
+                                </h3>
+                                <div class="head_origin">
+                                    <span class="txt_name">전라남도 강진군 강진읍, 1992</span>
+                                    <div class="tooltip_origin">
+                                        <p class="txt_tooltip">전라남도 강진군 강진읍, 1992</p>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="releaseFlag" value="N">
+                            </div>
+                            <div class="detail_cont">
+                                <div class="inner_cont">
+                                    <dl class="list_cont">
+                                        <dt>출생년도</dt>
+                                        <dd>1992.08.14</dd>
+                                    </dl>
+                                    <dl class="list_cont">
+                                        <dt>장점</dt>
+                                        <dd>친화력/ 모험적</dd>
+                                    </dl>
+                                    <dl class="list_cont">
+                                        <dt>단점</dt>
+                                        <dd>너무 모험적</dd>
+                                    </dl>
+                                    <dl class="list_cont">
+                                        <dt>최종학력</dt>
+                                        <dd>
+                                            대전대 경영학과
+                                        </dd>
+                                    </dl>
+                                    <!-- <dl class="list_cont">
+                                        <dt>러닝타임</dt>
+                                        <dd>
+                                            114분
+                                        </dd>
+                                    </dl> -->
+                                </div>
+                                <div class="inner_cont">
+                                    <dl class="list_cont">
+                                        <dt>성격</dt>
+                                        <dd>7점(10점만점)</dd>
+                                    </dl>
+                                    <dl class="list_cont">
+                                        <dt>병역</dt>
+                                        <dd>의경 (14.6 ~ 16.3)</dd>
+                                    </dl>
+                                    <dl class="list_cont">
+                                        <dt>교육</dt>
+                                        <dd>2019. 6월 비트 교육센터</dd>
+                                    </dl>
+                                    <dl class="list_cont">
+                                        <dt>프로젝트</dt>
+                                        <dd>뉴스기사를 통해 주가 예측</dd>
+                                    </dl>
+
+                                    <!-- <div class="tooltip_info">
+                                    <a href="#none" class="link_tooltip">영화정보<span class="ico_movie ico_info"></span></a>
+                                    <div class="tooltipinfo_layer">
+                                        <p class="txt_tooltip">
+                                            데이터 제공처 현황에 따라 본 페이지 내 정보와 OTT 플랫폼에서 제공하는 콘텐츠가 상이할 수 있습니다.<br>
+                                            영화 정보를 확인 후 이용바랍니다.
+                                        </p>
+                                        <a href="#none" class="link_close"><span class="ico_movie ico_close">닫기</span></a>
+                                    </div>
+                                </div> -->
+                                </div>
+                            </div>
+                            <div class="detail_btn">
+                                <div class="group_btn">
+                                    <a href="https://github.com/kimmjen" target="_blank" class="btn_g">
+                                        <!-- <span class="ico_movie ico_github"></span>깃허브 -->
+                                        <img src="../images/KIM/image/github-logo_icon-icons.com_64.png" alt="깃허브"
+                                            style="height: 20px; width: 20px;">
+                                        <span></span>깃허브
+                                    </a>
+                                    <a href="https://page.kakao.com/link/50652217" target="_blank" class="btn_g">
+                                        <img src="../images/KIM/image/gmail_icon_64.png" alt="지메일"
+                                            style="height: 20px; width: 20px;">
+                                        <span></span>지메일
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="hidden">
+                        
+                        <div class="box_detailinfo" data-tiara-layer="crew">
+                            <!-- 탭메뉴 -->
+                            <div class="tabmenu_wrap">
+                                <!-- <strong class="screen_out">영화제 탭메뉴</strong> -->
+                                <ul class="list_tabmenu" role="tablist" data-tiara-layer="tab">
+                                    <li role="presentation" class="on">
+                                        <!-- 선택시 on 클래스 추가 -->
+                                        <a href="#about" class="link_tabmenu" aria-selected="false"
+                                            role="tab" data-tiara-layer="menu" data-tiara-copy="탭_주요정보">
+                                            <span class="txt_tabmenu">나는?</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation" class="">
+                                        <a href="#skill" class="link_tabmenu" aria-selected="false"
+                                            role="tab" data-tiara-layer="crew" data-tiara-copy="탭_출연/제작">
+                                            <span class="txt_tabmenu">skill</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#hobby" class="link_tabmenu"
+                                            aria-selected="false" role="tab" data-tiara-layer="media"
+                                            data-tiara-copy="탭_영상/포토">
+                                            <span class="txt_tabmenu">취미(영화보기)</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#book" class="link_tabmenu"
+                                            aria-selected="false" role="tab" data-tiara-layer="media"
+                                            data-tiara-copy="탭_영상/포토">
+                                            <span class="txt_tabmenu">취미(독서)</span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                            <div class="contents">
+                                <h4 class="screen_out" id="#about">김제민</h4>
+                                <div class="detail_basicinfo">
+                                    <div class="movie_summary">
+                                        <div class="info_desc" data-tiara-layer="desc">
+                                            <div class="">
+                                                <b>느리더라도 기본에 충실하게<br>
+                                                    이익보다는 공익을 위해</b><br>
+                                                <br>
+                                                개발자가 되고 싶은이유?<br><br>
+                                                결과물이 눈에 직관적으로 보이며 더 나은 세상을 만들기 때문에<br><br>
+                                                백엔드 개발자가 되고 싶은 이유?<br><br>
+                                                앞에 나서서 하는 걸 부끄러워 하기도 하지만 뒤에 묵묵히 뒷받침 해주는 역할이 성향에 맞는 거 같아서.<br><br>
+                                                개발자가 되고 나서 하고 싶은 것은?<br><br>
+                                                자기 개발도 중요하지만, 연차 쌓이고 본인 실력도 오르면 AIRC카만들기, AI드론 만들어 보기<br><br>
+                                                유망한 개발자 된다면?<br><br>
+                                                서울, 경기도를 벗어나 고향인 강진에서 개발업무를 하고 싶다.<br><br>
+                                                그리고 노트북 하나만 들고 세계여행을 하며 개발업무에 임하고 싶다.
+
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 스킬 시작 -->
+                                <div class="detail_crewinfo" data-tiara-layer="crew">
+                                    <h5 class="tit_section" id="skill">스킬</h5>
+                                    <ul class="list_crewall">
+                                        <li>
+                                            <div class="item_crewall">
+                                                <a href="/person/main?personId=276341" class="thumb_item"
+                                                    data-tiara-layer="thumb" data-tiara-copy="주요정보_출연진_썸네일"
+                                                    data-tiara-ordnum="1">
+                                                    <img src="../images/KIM/image/windows.png"
+                                                        class="img_thumb" alt="모튼 틸덤">
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="/person/main?personId=276341" class="link_tit"
+                                                            data-tiara-layer="name" data-tiara-copy="주요정보_출연진_이름"
+                                                            data-tiara-ordnum="1">윈도우 (Window 10)</a>
+                                                    </strong>
+                                                    <span class="txt_info">OS</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item_crewall">
+                                                <a href="/person/main?personId=110148" class="thumb_item"
+                                                    data-tiara-layer="thumb" data-tiara-copy="주요정보_출연진_썸네일"
+                                                    data-tiara-ordnum="2">
+                                                    <img src="../images/KIM/image/java.png"
+                                                        class="img_thumb" alt="java">
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="/person/main?personId=110148" class="link_tit"
+                                                            data-tiara-layer="name" data-tiara-copy="주요정보_출연진_이름"
+                                                            data-tiara-ordnum="2">자바(JAVA)</a>
+                                                    </strong>
+                                                    <span class="txt_info">language</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item_crewall">
+                                                <a href="/person/main?personId=110148" class="thumb_item"
+                                                    data-tiara-layer="thumb" data-tiara-copy="주요정보_출연진_썸네일"
+                                                    data-tiara-ordnum="2">
+                                                    <img src="../images/KIM/image/python.png"
+                                                        class="img_thumb" alt="python">
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="/person/main?personId=110148" class="link_tit"
+                                                            data-tiara-layer="name" data-tiara-copy="주요정보_출연진_이름"
+                                                            data-tiara-ordnum="2">파이썬</a>
+                                                    </strong>
+                                                    <span class="txt_info">language</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item_crewall">
+                                                <a href="/person/main?personId=1440" class="thumb_item"
+                                                    data-tiara-layer="thumb" data-tiara-copy="주요정보_출연진_썸네일"
+                                                    data-tiara-ordnum="3">
+                                                    <img src="../images/KIM/image/intellj.png"
+                                                        class="img_thumb" alt="인텔리제이">
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="/person/main?personId=1440" class="link_tit"
+                                                            data-tiara-layer="name" data-tiara-copy="주요정보_출연진_이름"
+                                                            data-tiara-ordnum="3">인텔리제이(ItelliJ)</a>
+                                                    </strong>
+                                                    <span class="txt_info">IDE</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item_crewall">
+                                                <a href="/person/main?personId=80195" class="thumb_item"
+                                                    data-tiara-layer="thumb" data-tiara-copy="주요정보_출연진_썸네일"
+                                                    data-tiara-ordnum="4">
+                                                    <img src="../images/KIM/image/vscode.png"
+                                                        class="img_thumb" alt="vscode">
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="/person/main?personId=80195" class="link_tit"
+                                                            data-tiara-layer="name" data-tiara-copy="주요정보_출연진_이름"
+                                                            data-tiara-ordnum="4">VSCODE</a>
+                                                    </strong>
+                                                    <span class="txt_info">IDE</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- 스킬 종료 -->
+                                <!-- 취미 영화 -->
+                                <div class="detail_vodphotoinfo" data-tiara-layer="media">
+                                    <h5 class="tit_section" id="hobby">취미</h5>
+                                    <div>
+                                        <h1>영화보기</h1>
+                                    </div>
+                                    <ul class="list_vodphoto">
+
+                                        <li>
+                                            <div class="item_vodphoto">
+                                                <a href="#photoId=1002612" class="thumb_img" data-tiara-layer="photo"
+                                                    data-tiara-ordnum="1">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/amaging.jpg)"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item_vodphoto">
+                                                <a href="#photoId=1002613" class="thumb_img" data-tiara-layer="photo"
+                                                    data-tiara-ordnum="2">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/noting.jpg)"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item_vodphoto">
+                                                <a href="#photoId=982337" class="thumb_img" data-tiara-layer="photo"
+                                                    data-tiara-ordnum="3">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/The-Intern_poster_goldposter_com_14.jpg)"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <br><br>
+                                    <ul class="list_vodphoto">
+
+                                        <li>
+                                            <div class="item_vodphoto">
+                                                <a href="#photoId=1002612" class="thumb_img" data-tiara-layer="photo"
+                                                    data-tiara-ordnum="1">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/whiplash.jpg)"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item_vodphoto">
+                                                <a href="#photoId=1002613" class="thumb_img" data-tiara-layer="photo"
+                                                    data-tiara-ordnum="2">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/joo.jpg)"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="item_vodphoto">
+                                                <a href="#photoId=982337" class="thumb_img" data-tiara-layer="photo"
+                                                    data-tiara-ordnum="3">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/coco.jpg)"></span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- 취미 영화 -->
+                                <!--  -->
+                                
+                                <!-- 독서 -->
+                                <div class="detail_relatedinfo" data-tiara-layer="related">
+                                    <h5 class="tit_section" id="book">독서<span class="num_score">2</span><span
+                                            class="screen_out">개</span></h5>
+                                    <ul class="list_related">
+                                        <li>
+                                            <div class="item_related">
+                                                <a href="https://search.daum.net/search?w=tot&amp;q=%ED%8A%9C%EB%A7%81%3A+%EC%9D%B4%EB%AF%B8%ED%85%8C%EC%9D%B4%EC%85%98+%EA%B2%8C%EC%9E%84%28%EC%96%91%EC%9E%A5%EB%B3%B8+HardCover%29"
+                                                    class="thumb_img" data-tiara-layer="thumb"
+                                                    data-tiara-copy="주요정보_관련정보_썸네일" data-tiara-ordnum="1">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/b_잡화.jpg)"></span>
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="https://search.daum.net/search?w=tot&amp;q=%ED%8A%9C%EB%A7%81%3A+%EC%9D%B4%EB%AF%B8%ED%85%8C%EC%9D%B4%EC%85%98+%EA%B2%8C%EC%9E%84%28%EC%96%91%EC%9E%A5%EB%B3%B8+HardCover%29"
+                                                            class="link_tit" data-tiara-layer="title"
+                                                            data-tiara-ordnum="1" data-tiara-copy="주요정보_관련정보_컨텐츠명">나미야 잡화점의 기적</a>
+                                                    </strong>
+                                                    <dl class="desc_info">
+                                                        <dd>도서</dd>
+                                                    </dl>
+                                                    <dl class="desc_info">
+                                                        <dd>히가시노 게이고</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item_related">
+                                                <a href="https://search.daum.net/search?w=tot&amp;q=%EC%95%A8%EB%9F%B0+%ED%8A%9C%EB%A7%81%EC%9D%98+%EC%9D%B4%EB%AF%B8%ED%85%8C%EC%9D%B4%EC%85%98+%EA%B2%8C%EC%9E%84%28%EC%96%91%EC%9E%A5%EB%B3%B8+HardCover%29"
+                                                    class="thumb_img" data-tiara-layer="thumb"
+                                                    data-tiara-copy="주요정보_관련정보_썸네일" data-tiara-ordnum="2">
+                                                    <span class="bg_img"
+                                                        style="background-image:url(../images/KIM/image/b_god.jpg)"></span>
+                                                </a>
+                                                <div class="thumb_cont">
+                                                    <strong class="tit_item">
+                                                        <a href="https://search.daum.net/search?w=tot&amp;q=%EC%95%A8%EB%9F%B0+%ED%8A%9C%EB%A7%81%EC%9D%98+%EC%9D%B4%EB%AF%B8%ED%85%8C%EC%9D%B4%EC%85%98+%EA%B2%8C%EC%9E%84%28%EC%96%91%EC%9E%A5%EB%B3%B8+HardCover%29"
+                                                            class="link_tit" data-tiara-layer="title"
+                                                            data-tiara-ordnum="2" data-tiara-copy="주요정보_관련정보_컨텐츠명">신</a>
+                                                    </strong>
+                                                    <dl class="desc_info">
+                                                        <dd>도서</dd>
+                                                    </dl>
+                                                    <dl class="desc_info">
+                                                        <dd>베르나르 베르베르</dd>
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- 독서 -->
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_detailinfo" data-tiara-layer="crew">
+
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
 </body>
+
 </html>

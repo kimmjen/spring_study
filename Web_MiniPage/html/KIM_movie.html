@@ -1,26 +1,409 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/KIM_movie.css">
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' id='wp-block-library-css'
+        href='https://webredox.net/demo/wp/entourage/demo1/wp-includes/css/dist/block-library/style.min.css?ver=5.7.3'
+        type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-css'
+        href='https://webredox.net/demo/wp/entourage/demo1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.4.1'
+        type='text/css' media='all' />
+    <link rel='stylesheet' id='style-css'
+        href='https://webredox.net/demo/wp/entourage/demo1/wp-content/themes/entouragewp/style.css?ver=5.7.3'
+        type='text/css' media='all' />
+    <link rel='stylesheet' id='theme-style-css'
+        href='https://webredox.net/demo/wp/entourage/demo1/wp-content/themes/entouragewp/includes/css/style.css?ver=5.7.3'
+        type='text/css' media='all' />
+    <script type='text/javascript'
+        src='https://webredox.net/demo/wp/entourage/demo1/wp-includes/js/jquery/jquery.min.js?ver=3.5.1'
+        id='jquery-core-js'></script>
+    <script type='text/javascript'
+        src='https://webredox.net/demo/wp/entourage/demo1/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2'
+        id='jquery-migrate-js'></script>
+    <script type='text/javascript'
+        src='https://webredox.net/demo/wp/entourage/demo1/wp-content/plugins/twitter-tweets/js/weblizar-fronend-twitter-tweets.js?ver=1'
+        id='wl-weblizar-fronend-twitter-tweets-js'></script>
+    <link rel="https://api.w.org/" href="https://webredox.net/demo/wp/entourage/demo1/wp-json/" />
+    <link rel="alternate" type="application/json"
+        href="https://webredox.net/demo/wp/entourage/demo1/wp-json/wp/v2/pages/6" />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD"
+        href="https://webredox.net/demo/wp/entourage/demo1/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml"
+        href="https://webredox.net/demo/wp/entourage/demo1/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 5.7.3" />
+    <link rel="canonical" href="https://webredox.net/demo/wp/entourage/demo1/" />
+    <link rel='shortlink' href='https://webredox.net/demo/wp/entourage/demo1/' />
+    <link rel="alternate" type="application/json+oembed"
+        href="https://webredox.net/demo/wp/entourage/demo1/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwebredox.net%2Fdemo%2Fwp%2Fentourage%2Fdemo1%2F" />
+    <link rel="alternate" type="text/xml+oembed"
+        href="https://webredox.net/demo/wp/entourage/demo1/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwebredox.net%2Fdemo%2Fwp%2Fentourage%2Fdemo1%2F&#038;format=xml" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/KIM_movie_main.css">
+    <link rel="stylesheet" href="../css/KIM_movie_video.css">
+    <link rel="stylesheet" href="../css/KIM_movie_movie.css">
 </head>
+
 <body>
+    <!-- 인트로 -->
+    <section class="intro have-video" style="height: 877px; 
+        overflow: hidden; 
+        /* background-image: url(&quot;https://webredox.net/demo/wp/entourage/demo1/wp-content/uploads/2016/01/video.jpg&quot;);  */
+        background-size: cover; 
+        background-position: center center;">
+        <!-- video -->
+        <video class="intro-video" autoplay="" muted="" loop="">
 
-<video autoplay loop id="myVideo">
-  <source src="../images/KIM/video/1.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
+            <source src="../images/KIM/video/1.mp4" type="video/mp4">
+        </video>
 
-<div class="content">
-  <h1>IMITATION GAME</h1>
-  <p>24시간 마다 바뀌는 해독불가 암호
-    암호를 풀고 1,400 만 명의 목숨을 구한 천재 수학자</p>
-  <button id="myBtn" onclick="myFunction()">Pause</button>
-</div>
+        <div class="center">
+            <div class="intro-content video">
 
-<script src="../js/KIM_movie.jsmain.js">
-</script>
+                <!--title -->
+                <h1>IMITATION GAME</h1>
 
+                <div class="clearfix"></div>
+
+
+                <!-- subtitle -->
+                <span class="subtitle">24시간 마다 바뀌는 해독불가 암호</span>
+
+
+
+                <!-- button -->
+                <a href="#about" class="button style-1 scheme-1" onclick="ScrollTo('trailer')">about the movie</a>
+
+                <a href="#actors" class="button style-2 scheme-2" onclick="ScrollTo('about')">actors</a>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- video end -->
+    <!--  -->
+    <div class="clearfix"></div>
+    <!--  -->
+    <!-- 영화내용 -->
+    <section id="about" class="main-section">
+
+
+        <div class="center">
+
+            <!-- title -->
+            <h2 class="title">
+                <strong>About</strong> the movie
+            </h2>
+        </div>
+
+
+        <div class="wrapper-content">
+
+            <div class="wpb_row section vc_row-fluid" style=" text-align:left;">
+                <div class=" full_section_inner clearfix">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="center ">
+                                    <div class="one-half intro-about">
+                                        <div class="slider-about owl-carousel owl-theme owl-loaded">
+                                            <div class="owl-item active" style="width: 350px; margin-right: 10px;">
+                                                <div class="item "><img
+                                                        src="../images/KIM/movie_image/the-imitation-game-poster.jpg" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="one-half last text-section other-color about skrollable skrollable-after"
+                                        data-350-bottom="right:-1000px;" data-150-bottom="right:0;" style="right: 0px;">
+                                        <p style="display: none;"></p>
+                                        <h3>암호를 풀고 1,400 만 명의 목숨을 구한 천재 수학자</h3>
+                                        <p>
+                                            <!-- p -->매 순간 3명이 죽는 사상 최악의 위기에 처한 제 2차 세계대전.
+                                            절대 해독이 불가능한 암호 ‘에니그마’로 인해 연합군은 속수무책으로 당하게 된다
+                                            결국 각 분야의 수재들을 모아 기밀 프로젝트 암호 해독팀을 가동한다.
+                                            천재 수학자 앨런 튜링(베네딕트 컴버배치)은 암호 해독을 위한 특별한 기계를 발명하지만
+                                            24시간 마다 바뀌는 완벽한 암호 체계 때문에 번번히 좌절하고 마는데...
+                                            과연, 앨런 튜링과 암호 해독팀은 암호를 풀고 전쟁의 승리를 끌어낼 수 있을까…?
+                                            <a href="#actors" onclick="ScrollTo('trailer')"
+                                                class="button style-2 scheme-3">출연진</a>
+                                        </p>
+                                        <div class="cover-right" style="right: -376.5px;"></div>
+                                        <div class="cover-small-left"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!--  -->
+    <!--  -->
+    <div class="clearfix"></div>
+    <!--  -->
+    <!-- 출연진 -->
+    <section id="actors" class="main-section">
+
+
+        <div class="center">
+
+            <!-- title -->
+            <h2 class="title">
+                <strong>Film</strong> actors
+            </h2>
+        </div>
+
+
+        <div class="box_detailinfo" data-tiara-layer="crew" style="margin: 0; padding: 0;">
+            <div class="contents">
+    
+                <div class="detail_crewinfo" style="text-align: center;">
+                    <h5 class="tit_section">주연</h5>
+                    <ul class="list_crew" style="justify-content: space-between;">
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=110148" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F8dff4ffda4b4692d8eaf40179ae75f7caeacea46" class="img_thumb" alt="베네딕트 컴버배치">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=110148" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">베네딕트 컴버배치</a>
+                                        </strong>
+                                            <span class="subtit_item">Benedict Cumberbatch</span>
+                                            <span class="txt_info">앨런 튜링 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=1440" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fb3db930aa2c7ba02deae7b4b3f1b31bd3865fdc2" class="img_thumb" alt="키이라 나이틀리">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=1440" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">키이라 나이틀리</a>
+                                        </strong>
+                                            <span class="subtit_item">Keira Knightley</span>
+                                            <span class="txt_info">조안 클라크 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=80195" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fmovie-photo%2F36%2F52%2F425236%2Fpeople_425236.jpg" class="img_thumb" alt="매튜 구드">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=80195" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">매튜 구드</a>
+                                        </strong>
+                                            <span class="subtit_item">Matthew Goode</span>
+                                            <span class="txt_info">휴 알렉산더 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                    </ul>
+                </div>
+                <div class="detail_crewinfo" style="text-align: center;">
+                    <h5 class="tit_section">출연</h5>
+                    <ul class="list_crew">
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=300899" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F145A8A3F4F491EED10" class="img_thumb" alt="알렌 리치">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=300899" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">알렌 리치</a>
+                                        </strong>
+                                            <span class="subtit_item">Allen Leech</span>
+                                            <span class="txt_info">존 케인크로스 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=149521" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F171F991A4BE5194205" class="img_thumb" alt="매튜 비어드">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=149521" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">매튜 비어드</a>
+                                        </strong>
+                                            <span class="subtit_item">Matthew Beard</span>
+                                            <span class="txt_info">피터 힐튼 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=43156" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F1160C910AE0E79F54E" class="img_thumb" alt="찰스 댄스">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=43156" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">찰스 댄스</a>
+                                        </strong>
+                                            <span class="subtit_item">Charles Dance</span>
+                                            <span class="txt_info">데니스턴 중령 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=54253" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F1543EE10B0A5036D4B" class="img_thumb" alt="마크 스트롱">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=54253" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">마크 스트롱</a>
+                                        </strong>
+                                            <span class="subtit_item">Mark Strong</span>
+                                            <span class="txt_info">스튜어트 멘지스 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=191417" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F0d60a80e4083dc15e1bbdf6a56a30ef541891fcd" class="img_thumb" alt="로리 키니어">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=191417" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">로리 키니어</a>
+                                        </strong>
+                                            <span class="subtit_item">Rory Kinnear</span>
+                                            <span class="txt_info">로버트 녹 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=341966" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F25095E37510F733E11" class="img_thumb" alt="제임스 노스코트">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=341966" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">제임스 노스코트</a>
+                                        </strong>
+                                            <span class="subtit_item">James Northcote</span>
+                                            <span class="txt_info">잭 굿 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=89295" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F110198284B010A6044" class="img_thumb" alt="톰 굿맨 힐">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=89295" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">톰 굿맨 힐</a>
+                                        </strong>
+                                            <span class="subtit_item">Tom Goodman Hill</span>
+                                            <span class="txt_info">스탈 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=11844" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F116F9810B1BC0C3292" class="img_thumb" alt="스티븐 웨딩턴">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=11844" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">스티븐 웨딩턴</a>
+                                        </strong>
+                                            <span class="subtit_item">Steven Waddington</span>
+                                            <span class="txt_info">스미스 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=191402" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=191402" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">이안 굿맨</a>
+                                        </strong>
+                                            <span class="subtit_item">Ilan Goodman</span>
+                                            <span class="txt_info">키스 퍼먼 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=343966" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F264DB240512A45551A" class="img_thumb" alt="잭 탈튼">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=343966" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">잭 탈튼</a>
+                                        </strong>
+                                            <span class="subtit_item">Jack Tarlton</span>
+                                            <span class="txt_info">찰스 리처즈 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=352338" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F9f3e9707406d594dc87828602fa1bf86cf86737e" class="img_thumb" alt="알렉스 로더">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=352338" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">알렉스 로더</a>
+                                        </strong>
+                                            <span class="subtit_item">Alex Lawther</span>
+                                            <span class="txt_info">어린 앨런 튜링 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=393066" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=393066" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">잭 배넌</a>
+                                        </strong>
+                                            <span class="subtit_item">Jack Bannon</span>
+                                            <span class="txt_info">크리스토퍼 모컴 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item_crew">
+                                    <a href="/person/main?personId=169692" class="thumb_item" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">
+                                        <img src="https://img1.daumcdn.net/thumb/C116x168/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fcfile%2F1666B0234A23BEED6D" class="img_thumb" alt="투펜스 미들턴">
+                                    </a>
+                                    <div class="thumb_cont">
+                                        <strong class="tit_item">
+                                            <a href="/person/main?personId=169692" class="link_txt" data-tiara-layer="detail_crew" data-tiara-copy="출연제작_감독/주연/출연">투펜스 미들턴</a>
+                                        </strong>
+                                            <span class="subtit_item">Tuppence Middleton</span>
+                                            <span class="txt_info">헬렌 역</span>
+                                    </div>
+                                </div>
+                            </li>
+                    </ul>
+                </div>
+                
+                
+            </div>
+        </div>
+            
+            
+    </section>
+    <!--  -->
 </body>
+
 </html>

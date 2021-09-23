@@ -248,7 +248,7 @@ strong {
 html, body {
   height: 100%; }
 
-.kimmjen_wrap {
+.kakao_wrap {
   position: relative;
   min-width: 1100px;
   height: 100%;
@@ -256,49 +256,49 @@ html, body {
   padding: 180px 0 165px 0;
   box-sizing: border-box; }
 
-.kimmjen_content {
+.kakao_content {
   position: relative;
   min-height: 100%;
   background-image: linear-gradient(to bottom, #fafbfb 0, white 300px); }
 
-.kimmjen_article {
+.kakao_article {
   width: 1100px;
   min-height: 500px;
   margin: 0 auto;
   padding-bottom: 150px; }
 
 /* head */
-.kimmjen_head {
+.kakao_head {
   position: absolute;
   z-index: 100;
   left: 0;
   top: 0;
   width: 100%; }
 
-.kimmjen_head .kimmjenhead_top {
+.kakao_head .kakaohead_top {
   border-bottom: 1px solid #F7F7F7; }
 
 /* 2021-03-03 수정 */
-.kimmjen_head .kimmjenhead_top .inner_head {
+.kakao_head .kakaohead_top .inner_head {
   overflow: hidden;
   width: 1100px;
   height: 42px;
   padding-top: 17px;
   margin: 0 auto; }
 
-.kimmjen_head .tit_daum {
+.kakao_head .tit_daum {
   float: left;
   margin: 4px 27px 0 0; }
 
-.kimmjen_head .link_daum {
+.kakao_head .link_daum {
   float: left;
   margin-right: 8px;
   text-decoration: none; }
 
-.kimmjen_head .link_daum .logo_daum {
+.kakao_head .link_daum .logo_daum {
   display: block; }
 
-.kimmjen_head .tit_service {
+.kakao_head .tit_service {
   float: left;
   overflow: hidden;
   width: 32px;
@@ -309,17 +309,17 @@ html, body {
   background: url(https://t1.daumcdn.net/movie/movie2020/pc/ico_movie_210723.png) -380px -40px;
   background-size: 500px auto; }
 
-.kimmjen_head .list_relservice {
+.kakao_head .list_relservice {
   float: left; }
 
-.kimmjen_head .list_relservice li {
+.kakao_head .list_relservice li {
   float: left;
   margin-left: 14px; }
 
-.kimmjen_head .list_relservice li:first-child {
+.kakao_head .list_relservice li:first-child {
   margin-left: 0; }
 
-.kimmjen_head .list_relservice .link_relservice {
+.kakao_head .list_relservice .link_relservice {
   display: block;
   font-weight: 500;
   font-size: 15px;
@@ -327,11 +327,11 @@ html, body {
   color: #919191;
   text-decoration: none; }
 
-.kimmjen_head .kimmjenhead_menu {
+.kakao_head .kakaohead_menu {
   border-bottom: 1px solid #E8E8E8; }
 
 /* 2021-03-03 수정 */
-.kimmjen_head .kimmjenhead_menu .inner_head {
+.kakao_head .kakaohead_menu .inner_head {
   position: relative;
   width: 1100px;
   height: 119px;
@@ -399,73 +399,73 @@ html, body {
   color: #E92130; }
 
 /* foot */
-.kimmjen_foot {
+.kakao_foot {
   height: 164px;
   border-top: 1px solid #f6f6f6;
   font-size: 12px;
   background-color: #222223; }
 
-.kimmjen_foot .inner_foot {
+.kakao_foot .inner_foot {
   position: relative;
   width: 1100px;
   min-height: 86px;
   padding-top: 34px;
   margin: 0 auto; }
 
-.kimmjen_foot .direct_link {
+.kakao_foot .direct_link {
   position: relative;
   height: 22px;
   margin-bottom: 24px; }
 
-.kimmjen_foot .direct_link .direct_bundle {
+.kakao_foot .direct_link .direct_bundle {
   overflow: hidden; }
 
-.kimmjen_foot .direct_link .item_bundle {
+.kakao_foot .direct_link .item_bundle {
   float: left;
   margin-right: 4px; }
 
-.kimmjen_foot .direct_link .item_bundle .link_txt {
+.kakao_foot .direct_link .item_bundle .link_txt {
   display: block;
   padding: 0 11px;
   font-size: 13px;
   line-height: 20px;
   color: #d4d2d9; }
 
-.os_windows .kimmjen_foot .direct_link .item_bundle .link_txt {
+.os_windows .kakao_foot .direct_link .item_bundle .link_txt {
   letter-spacing: -0.06em; }
 
-.kimmjen_foot .direct_link .item_bundle:first-child .link_txt {
+.kakao_foot .direct_link .item_bundle:first-child .link_txt {
   padding-left: 0; }
 
-.kimmjen_foot .footer_link .link_info {
+.kakao_foot .footer_link .link_info {
   padding: 0 7px 0 8px;
   color: #868487; }
 
-.os_windows .kimmjen_foot .footer_link .link_info {
+.os_windows .kakao_foot .footer_link .link_info {
   letter-spacing: -0.06em; }
 
-.kimmjen_foot .footer_link .link_info:first-child {
+.kakao_foot .footer_link .link_info:first-child {
   padding-left: 0; }
 
-.kimmjen_foot .info_copyright {
+.kakao_foot .info_copyright {
   position: absolute;
   top: 47px;
   right: 5px;
   font-size: 12px;
   line-height: 19px; }
 
-.kimmjen_foot .info_copyright .info_warn {
+.kakao_foot .info_copyright .info_warn {
   font-weight: normal;
   color: #868487; }
 
-.kimmjen_foot .info_copyright .txt_copyright {
+.kakao_foot .info_copyright .txt_copyright {
   display: block;
   margin-top: 7px;
   font-style: normal;
   font-size: 12px;
   color: #d4cfd3; }
 
-.kimmjen_foot .info_copyright .link_kimmjen {
+.kakao_foot .info_copyright .link_kakao {
   font-weight: 600;
   color: #d4cfd3; }
 
@@ -516,16 +516,16 @@ html, body {
 .home_type {
   padding-top: 0; }
 
-.home_type .kimmjen_content {
+.home_type .kakao_content {
   background-image: none; }
 
-.home_type .kimmjen_article {
+.home_type .kakao_article {
   width: auto; }
 
-.home_type .kimmjen_head {
+.home_type .kakao_head {
   position: relative; }
 
-.home_type .kimmjen_head .kimmjenhead_menu {
+.home_type .kakao_head .kakaohead_menu {
   position: absolute;
   left: 0;
   width: 100%;
@@ -547,7 +547,7 @@ html, body {
 .detail_type {
   padding-top: 115px; }
 
-.detail_type .kimmjen_head .kimmjenhead_menu .inner_head {
+.detail_type .kakao_head .kakaohead_menu .inner_head {
   height: 54px; }
 
 .detail_type .gnb_movie {
@@ -938,7 +938,7 @@ html, body {
 .tit_section .ico_watcha {
   background-position: -40px -320px; }
 
-.tit_section .ico_kimmjenpage {
+.tit_section .ico_kakaopage {
   background-position: -80px -320px; }
 
 .tit_section .ico_wavve {
@@ -1807,28 +1807,28 @@ html, body {
     transform: translate3d(0, 0, 0); } }
 
 /* 검색 */
-.kimmjen_head .link_search {
+.kakao_head .link_search {
   position: absolute;
   right: -7px;
   top: 29px;
   background-color: #fff; }
 
-.kimmjen_head .link_search .ico_search {
+.kakao_head .link_search .ico_search {
   display: block;
   width: 20px;
   height: 20px;
   margin: 5px;
   background-position: -400px 0; }
 
-.kimmjen_head .moviesearch_wrap {
+.kakao_head .moviesearch_wrap {
   position: absolute;
   right: 0;
   top: 17px; }
 
-.kimmjen_head.search_on .link_search {
+.kakao_head.search_on .link_search {
   display: none; }
 
-.kimmjen_head.search_on .moviesearch_wrap {
+.kakao_head.search_on .moviesearch_wrap {
   display: block; }
 
 .moviesearch_wrap {
@@ -1891,7 +1891,7 @@ html, body {
   background-position: -400px 0; }
 
 /* 상세 검색 */
-.detail_type .kimmjen_head .link_search {
+.detail_type .kakao_head .link_search {
   top: 12px; }
 
 .detail_type .moviesearch_wrap {
@@ -2047,7 +2047,7 @@ html, body {
   margin-top: -1px;
   background-position: 0 -280px; }
 
-.box_homeranking .tit_section .ico_kimmjenpage {
+.box_homeranking .tit_section .ico_kakaopage {
   width: 141px;
   height: 30px;
   margin-top: 3px;
@@ -2511,7 +2511,7 @@ html, body {
 .group_btn .btn_g .ico_watcha {
   background-position: -40px -360px; }
 
-.group_btn .btn_g .ico_kimmjenpage {
+.group_btn .btn_g .ico_kakaopage {
   background-position: -80px -360px; }
 
 .group_btn .btn_g .ico_wavve {
@@ -2584,7 +2584,7 @@ html, body {
   height: 28px;
   background-position: -40px -400px; }
 
-.info_poster .ico_kimmjenpage {
+.info_poster .ico_kakaopage {
   position: absolute;
   left: 10px;
   top: 10px;
@@ -3084,9 +3084,10 @@ html, body {
   padding-top: 50px; }
 
 /* 공통 - 출연진 */
-.list_crewall:after {
+.list_crewall {
   display: block;
   visibility: hidden;
+  justify-content: center;
   height: 0;
   font-size: 0;
   clear: both;
@@ -3232,8 +3233,8 @@ html, body {
   display: block;
   overflow: hidden;
   position: relative;
-  width: 320px;
-  height: 540px;
+  width: 260px;
+  height: 135px;
   border-radius: 8px; }
 
 .item_vodphoto .thumb_img .bg_img {
@@ -5283,14 +5284,14 @@ html, body {
 .event_type {
   padding-top: 60px; }
 
-.event_type .kimmjenhead_menu {
+.event_type .kakaohead_menu {
   display: none; }
 
-.event_type .kimmjen_article {
+.event_type .kakao_article {
   width: 100%;
   padding: 0; }
 
-.event_type .kimmjen_foot {
+.event_type .kakao_foot {
   border-top-color: #181819; }
 
 .event_type .btn_top {
@@ -5982,7 +5983,7 @@ html, body {
 
 /* 레티나 이미지 */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
-  .ico_movie, .ico_logo, .kimmjen_head .tit_service {
+  .ico_movie, .ico_logo, .kakao_head .tit_service {
     background-image: url(https://t1.daumcdn.net/movie/movie2020/pc/rtn/ico_movie_210723.png); }
   .thumb_img, .thumb_item {
     background-image: url(https://t1.daumcdn.net/movie/movie2020/pc/rtn/ico_noimage.png); }
