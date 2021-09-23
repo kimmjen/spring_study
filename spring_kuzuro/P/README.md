@@ -787,3 +787,393 @@ listpage.jsp
 </div>
 ~~~
 
+---
+
+# [10. 페이징 구현 2](https://kuzuro.blogspot.com/2019/09/10-2.html)
+
+
+
+BoardController
+
+~~~java
+//모델객체에 ("key"이름으로, value를 전달)
+
+// 시작 및 끝 번호
+model.addAttribute("startPageNum", startPageNum);
+model.addAttribute("endPageNum", endPageNum);
+
+// 이전 및 다음 
+model.addAttribute("prev", prev);
+model.addAttribute("next", next);
+
+// 현재 페이지
+model.addAttribute("select", num);
+~~~
+
+
+
+ListPage
+
+~~~jsp
+<c:if test="${prev}">//이전페이지가 있다면 즉, 1페이지가 아닌경우
+ <span>[ <a href="/board/listPage?num=${startPageNum - 1}">이전</a> ]</span> //현재보다 1적은 페이지를 이전페이지로 표시
+</c:if>
+
+<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">//시작페이지부터 끝 페이지까지 num 으로 foreach로 반복
+    
+  <c:if test="${select != num}">
+   <a href="/board/listPage?num=${num}">${num}</a>//선택된 select가 아닌경우 a태그 표현
+  </c:if> 
+    
+    <c:if test="${select == num}">
+   <b>${num}</b>//선택된 select의 경우 볼드체로 표시
+  </c:if>
+</c:forEach>
+
+<c:if test="${next}">
+ <span>[ <a href="/board/listPage?num=${endPageNum + 1}">다음</a> ]</span>//다음페이지가 있다면, 즉 마지막이 아닌경우 다음페이지를 다음 으로 표시
+</c:if>
+~~~
+
+---
+
+# [11. 페이징 구현 3](https://kuzuro.blogspot.com/2019/09/11-3.html)
+
+```jsp
+//페이지정보를 분리하여 page객체에 담았으므로 앞에 page. 만 추가됨
+<c:if test="${page.prev}">
+ <span>[ <a href="/board/listPage?num=${page.startPageNum - 1}">이전</a> ]</span>
+</c:if>
+
+<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+ <span>
+ 
+  <c:if test="${select != num}">
+   <a href="/board/listPage?num=${num}">${num}</a>
+  </c:if>    
+  
+  <c:if test="${select == num}">
+   <b>${num}</b>
+  </c:if>
+    
+ </span>
+</c:forEach>
+
+<c:if test="${page.next}">
+ <span>[ <a href="/board/listPage?num=${page.endPageNum + 1}">다음</a> ]</span>
+</c:if>
+```
+
+---
+
+# [12. 검색 구현 1](https://kuzuro.blogspot.com/2019/09/12-1.html)
+
+
+
+boardMapper
+
+~~~xml
+<!-- 게시물 목록 + 페이징 + 검색 -->
+//listPageSearch라는 이름으로 실행되는 select
+//입력받는 데이터는 hashmap 형식
+//결과값은 BoardVO 객체로 반환
+<select id="listPageSearch" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+ select
+  bno, title, writer, regDate, viewCnt
+ from tbl_board
+    
+ //serchType값에 따라 where처리
+    //concat으로 앞뒤 문자열 합침
+ <if test='searchType.equals("title")'>
+  WHERE title LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ <if test='searchType.equals("content")'>
+  WHERE content LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ <if test='searchType.equals("title_content")'>
+  WHERE title LIKE concat('%', #{keyword}, '%') 
+   or content LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ <if test='searchType.equals("writer")'>
+  WHERE writer LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ order by bno desc
+  limit #{displayPost}, #{postNum}
+</select> 
+~~~
+
+
+
+
+
+BoardDAOImpl
+
+~~~java
+// 게시물 목록 + 페이징 + 검색
+ @Override
+ public List<BoardVO> listPageSearch(
+   int displayPost, int postNum, String searchType, String keyword) throws Exception {
+
+  HashMap<String, Object> data = new HashMap<String, Object>();
+  //data는 map형태로 다수의 변수들을 저장
+     
+  data.put("displayPost", displayPost);
+  data.put("postNum", postNum);
+  
+  data.put("searchType", searchType);
+  data.put("keyword", keyword);
+  
+  //위의 mapper쿼리를 통해 반환된 페이지 목록반환
+  return sql.selectList(namespace + ".listPageSearch", data);
+ }
+~~~
+
+
+
+BoardController
+
+~~~java
+// 게시물 목록 + 페이징 추가 + 검색
+@RequestMapping(value = "/listPageSearch", method = RequestMethod.GET)
+public void getListPageSearch(Model model, @RequestParam("num") int num, 
+  @RequestParam("searchType") String searchType, @RequestParam("keyword") String keyword
+  ) throws Exception {
+
+ 
+ Page page = new Page();
+ 
+ page.setNum(num);
+ page.setCount(service.count());  
+ 
+ List<BoardVO> list = null; 
+ //list = service.listPage(page.getDisplayPost(), page.getPostNum());
+ //반환된 페이지 목록
+ list = service.listPageSearch(page.getDisplayPost(), page.getPostNum(), searchType, keyword);
+ 
+    //페이지정보
+ model.addAttribute("list", list);
+    //보여질 페이지 수 정보
+ model.addAttribute("page", page);
+    //보고있는 페이지 정보
+ model.addAttribute("select", num);
+ 
+}
+~~~
+
+
+
+listPageSearch
+
+~~~jsp
+<script>
+//버튼이 눌렸을 때, 입력된 정보를 저장하여 spring으로 넘기는 과정
+ document.getElementById("searchBtn").onclick = function () {
+    
+     //태그로부터 값을 가져온다.
+  let searchType = document.getElementsByName("searchType")[0].value;
+  let keyword =  document.getElementsByName("keyword")[0].value;
+  
+     //페이지를 해당 정보를 가진 값으로 이동시킨다. 즉, 검색을 한다.
+  location.href = "/board/listPageSearch?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+ };
+</script>
+~~~
+
+---
+
+
+
+# [13. 검색 구현 2](https://kuzuro.blogspot.com/2019/10/13-2.html)
+
+1. 페이지 번호를 클릭하여 페이지를 이동하면, 검색조건과 검색어가 없어지는 문제
+   - 검색 정보가 유지되지 못함.
+
+2. 검색결과와 무관하게 페이징이 생성되는 문제
+   - 페이징이 될 때, 검색조건이 반영되지 않았기 때문.
+
+
+
+boardMapper
+
+~~~xml
+<!-- 게시물 총 갯수 + 검색 적용 -->
+<select id="searchCount" parameterType="hashMap" resultType="int">
+    //검색 조건에 따른 페이지의 수를 반환
+ select count(bno) from tbl_board  
+  
+ <if test='searchType.equals("title")'>
+  WHERE title LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ <if test='searchType.equals("content")'>
+  WHERE content LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ <if test='searchType.equals("title_content")'>
+  WHERE title LIKE concat('%', #{keyword}, '%') 
+   or content LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+ <if test='searchType.equals("writer")'>
+  WHERE writer LIKE concat('%', #{keyword}, '%')
+ </if>
+ 
+</select>
+~~~
+
+
+
+BoardDAOImpl
+
+~~~java
+// 게시물 총 갯수 + 검색 적용
+@Override
+public int searchCount(String searchType, String keyword) throws Exception {
+ 
+ HashMap data = new HashMap();
+ //검색조건을 넣어서
+ data.put("searchType", searchType);
+ data.put("keyword", keyword);
+ //검색조건에 맞는 총 개수를 반환
+ return sql.selectOne(namespace + ".searchCount", data); 
+}
+~~~
+
+
+
+BoardController
+
+~~~java
+page.setCount(service.searchCount(searchType, keyword));
+//검색조건에 맞는 총 수를 객체에 전달
+~~~
+
+
+
+ListPageSearch
+
+~~~jsp
+<div>
+ <select name="searchType">
+     //만약 조건이 제목검색이라면 제목을 선택
+     <option value="title" <c:if test="${searchType eq 'title'}">selected</c:if>>제목</option>
+        <option value="content" <c:if test="${searchType eq 'content'}">selected</c:if>>내용</option>
+     <option value="title_content" <c:if test="${searchType eq 'title_content'}">selected</c:if>>제목+내용</option>
+     <option value="writer" <c:if test="${searchType eq 'writer'}">selected</c:if>>작성자</option>
+ </select>
+ //검색내역이 있다면 keyword에 저장되어있을 값을 가져와서 검색정보 유지
+ <input type="text" name="keyword" value="${page.keyword}"/>
+ 
+ <button type="button" id="searchBtn">검색</button>
+</div>
+~~~
+
+
+
+Page
+
+~~~java
+private String searchTypeKeyword; //검색어
+
+public void setSearchTypeKeyword(String searchType, String keyword) {
+ 
+ if(searchType.equals("") || keyword.equals("")) {//검색조건이 없다면
+  searchTypeKeyword = ""; //검색어 없음
+ } else {
+  searchTypeKeyword = "&searchType=" + searchType + "&keyword=" + keyword; 
+     //검색어를 주소 형색으로 만든다.
+ }  
+}
+
+public String getSearchTypeKeyword() {
+ return searchTypeKeyword;//url을 통해 검색정보를 넘기기위해 반환
+}
+~~~
+
+
+
+BoardController
+
+~~~java
+// page에 검색어 정보를 받아온다.
+page.setSearchTypeKeyword(searchType, keyword);
+~~~
+
+
+
+listPageSearch
+
+~~~jsp
+<c:if test="${page.prev}">
+    //페이지정보에 검색어 정보가 들어가게 됨
+ <span>[ <a href="/board/listPageSearch?num=${page.startPageNum - 1}${page.searchTypeKeyword}">이전</a> ]</span>
+</c:if>
+
+<c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+ <span>
+ 
+  <c:if test="${select != num}">
+          //페이지정보에 검색어 정보가 들어가게 됨
+   <a href="/board/listPageSearch?num=${num}${page.searchTypeKeyword}">${num}</a>
+  </c:if>    
+  
+  <c:if test="${select == num}">
+   <b>${num}</b>
+  </c:if>
+    
+ </span>
+</c:forEach>
+
+<c:if test="${page.next}">
+        //페이지정보에 검색어 정보가 들어가게 됨
+ <span>[ <a href="/board/listPageSearch?num=${page.endPageNum + 1}${page.searchTypeKeyword}">다음</a> ]</span>
+</c:if>
+~~~
+
+---
+
+# [14. 댓글 기본 설정 및 조회 구현](https://kuzuro.blogspot.com/2019/10/14.html)
+
+BoardController
+
+~~~java
+// 댓글 조회
+
+//여러개의 댓글들을 가져옴
+List<ReplyVO> reply = null;
+reply = replyService.list(bno);
+//모델에 댓글 목록을 넘긴다.
+model.addAttribute("reply", reply);
+~~~
+
+
+
+view.jsp
+
+~~~jsp
+//위에서 모델에 넘긴reply객체를 이용하여 정보를 표시
+<c:forEach items="${reply}" var="reply">
+<li>
+    <div>
+        <p>${reply.writer} / ${reply.regDate}</p>
+        <p>${reply.content }</p>
+    </div>
+</li>    
+</c:forEach>
+~~~
+
+---
+
+# [15. 댓글 작성 구현](https://kuzuro.blogspot.com/2019/10/15.html)(마지막)
+
+view
+
+~~~jsp
+<input type="hidden" name="bno" value="${view.bno}">
+//hidden으로 foregin key등의 노출되어서는 곤란한 값을 넘길 수 있다.
+~~~
+
