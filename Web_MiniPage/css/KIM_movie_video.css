@@ -1,0 +1,209 @@
+/*  */
+.intro {
+    z-index: 100;
+    position: relative;
+}
+
+.intro have-video {
+    height: 877px;
+    overflow: hidden;
+    /* background-image: url(https://webredox.net/demo/wp/entourage/demo1/wp-content/uploads/2016/01/video.jpg); */
+    background-size: cover;
+    background-position: center center;
+}
+.intro-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* height: 877px; */
+    /* width: auto; */
+}
+
+/*  */
+
+div {
+    display: block;
+}
+
+.intro .intro-content {
+    position: absolute;
+    bottom: 350px;
+    z-index: 100;
+}
+
+/* @media (max-width: 1200px) .intro .intro-content {
+    padding: 10px;
+} */
+
+h1 {
+    font-size: 72px;
+    line-height: 72px;
+}
+
+h1 {
+    font-display: swap;
+}
+
+.intro .intro-content h1, .intro .intro-content .subtitle {
+    text-transform: uppercase;
+    font-family: "OpenSansBold", Arial, Helvetica,sans-serif;
+    padding: 10px;
+}
+
+.intro .intro-content h1 {
+    color: #fff;
+    background-color: #0D0D15;
+}
+
+.intro .intro-content h1 {
+    float: left;
+}
+
+.intro .intro-content.video h1, 
+.intro .intro-content.video .subtitle {
+    background-color: #0D0D15;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*  */
+.intro .intro-content h1, .intro .intro-content .subtitle {
+    text-transform: uppercase;
+    font-family: "OpenSansBold", Arial, Helvetica,sans-serif;
+    padding: 10px;
+}
+
+.intro .intro-content .subtitle {
+    color: #fff;
+    background-color: #0D0D15;
+    font-size: 24px;
+    margin: 10px 0 50px 0;
+    display: table;
+}
+
+.intro .intro-content.video h1, .intro .intro-content.video .subtitle {
+    background-color: #0D0D15;
+}
+
+/*  */
+a {
+    text-decoration: none;
+}
+
+.button {
+    text-decoration: uppercase;
+    font-family: "OpenSansBold", Arial, Helvetica,sans-serif;
+}
+
+.button {
+    margin: 54px 11px 0 0;
+    float: left;
+}
+
+.button.style-1 {
+    padding: 15px 20px;
+}
+
+.button.style-2 {
+    border-style: solid;
+    border-width: 2px;
+    padding: 13px 20px;
+}
+.button.scheme-1 {
+    color: #fff;
+    background-color: #e62739;
+    -webkit-transition: background-color 300ms linear;
+    -moz-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+}
+
+.button.scheme-2 {
+    color: #fff;
+    border-color: #fff;
+    -webkit-transition: background-color 300ms linear;
+    -moz-transition: background-color 300ms linear;
+    -o-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
+}
+
+.intro .intro-content .button {
+    margin: 0 11px 0 0;
+}
+
+/*  */
+.main-section {
+    float: left;
+    width: 100%;
+    z-index: 10;
+    position: relative;
+}
+
+h2 {
+    font-size: 36px;
+    line-height: 36px;
+}
+
+.title {
+    text-transform: uppercase;
+    border-style: solid;
+    border-width: 0 0 0 2px;
+    border-color: #fff;
+    padding: 10px 0 10px 20px;
+}
+
+
+
+.bold, strong {
+    font-family: "OpenSansBold", Arial, Helvetica,sans-serif;
+}
+
+.wrapper-content .wpb_content_element, .wrapper-content .wpb_row {
+    margin-bottom: 0px;
+}
+
+.center {
+    max-width: 1150px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.one-half {
+    width: 49%;
+}
+
+.one-half, .one-third, .two-third, .three-fourth, .one-fourth, .one-fifth, .two-fifth, .three-fifth, .four-fifth, .one-sixth, .five-sixth {
+    position: relative;
+    margin-right: 2%;
+    float: left;
+}
+.owl-carousel {
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+.about {
+    min-height: 640px;
+    padding-left: 30px;
+}
+
+.text-section {
+    min-height: 680px;
+}
+.other-color {
+    color: #7a7a7a;
+    background-color: #fff;
+    padding: 0 20px;
+}
+.one-half .other-color {
+    margin-right: 0 !important;
+    clear: right;
+}
+/*  */
+
+/* 출연진 */
