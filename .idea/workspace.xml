@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/spring_kuzuro/K/src/main/webapp/WEB-INF/appServlet-servlet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/spring_study.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/spring_study.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/L/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/P/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/Y/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Web_MiniPage/html/KIM_portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/Web_MiniPage/html/KIM_portfolio.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,9 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1y5K2dzvss55QucVkfC70qGeokZ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="false" />
@@ -42,15 +48,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring_kuzuro/K" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontV" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="모듈" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ION_KOSA\spring_study\frontV" />
       <recent name="C:\ION_workspace\spring_study\spring_kuzuro" />
       <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images\KIM\img" />
       <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images" />
@@ -74,6 +82,7 @@
       <workItem from="1631662598926" duration="709000" />
       <workItem from="1631666643568" duration="888000" />
       <workItem from="1631750217865" duration="4350000" />
+      <workItem from="1632706350883" duration="1353000" />
     </task>
     <servers />
   </component>
