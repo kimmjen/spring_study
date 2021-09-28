@@ -2,12 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/frontV/K/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontV/L/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontV/P/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontV/Y/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/components/TodoFooter.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/components/TodoHeader.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/components/TodoInput.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/components/TodoList.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/components/common/Modal.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontV/K/vue-todo/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Web_MiniPage/html/KIM_portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/Web_MiniPage/html/KIM_portfolio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontV/K/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontV/K/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -32,7 +45,7 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1y5K2dzvss55QucVkfC70qGeokZ" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -48,24 +61,53 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontV" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontV/K/todo/src/components" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="모듈" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ION_KOSA\spring_study\frontV\K\todo\src\components" />
+      <recent name="C:\ION_KOSA\spring_study\frontV\K\vuetodo\src\components" />
       <recent name="C:\ION_KOSA\spring_study\frontV" />
       <recent name="C:\ION_workspace\spring_study\spring_kuzuro" />
       <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images\KIM\img" />
-      <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images\KIM" />
     </key>
+  </component>
+  <component name="RunManager" selected="npm.serve">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontV/K/vuetodo/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontV/K/vuetodo/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.serve" />
+        <item itemvalue="npm.build" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,7 +124,9 @@
       <workItem from="1631662598926" duration="709000" />
       <workItem from="1631666643568" duration="888000" />
       <workItem from="1631750217865" duration="4350000" />
-      <workItem from="1632706350883" duration="1353000" />
+      <workItem from="1632706350883" duration="2512000" />
+      <workItem from="1632792839318" duration="4326000" />
+      <workItem from="1632798733832" duration="10610000" />
     </task>
     <servers />
   </component>
