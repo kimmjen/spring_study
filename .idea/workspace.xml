@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/K/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/K/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/L/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/L/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/P/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/P/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/Y/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/Y/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +121,7 @@
       <workItem from="1632792839318" duration="4326000" />
       <workItem from="1632798733832" duration="18303000" />
       <workItem from="1633148039584" duration="480000" />
-      <workItem from="1633148569538" duration="1773000" />
+      <workItem from="1633148569538" duration="1984000" />
     </task>
     <servers />
   </component>
