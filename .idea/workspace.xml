@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontV/K/vue_learn/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontV/K/vue_learn/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/K/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/K/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/L/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/L/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/P/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/P/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/Y/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/Y/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontV/K/todo/src/components" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="모듈" />
     <property name="project.structure.proportion" value="0.15" />
@@ -63,13 +69,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ION_KOSA\spring_study\BOOK\Spring_Vue_LIZARD" />
       <recent name="C:\ION_KOSA\spring_study\frontV\K\todo\src\components" />
       <recent name="C:\ION_KOSA\spring_study\frontV\K\vuetodo\src\components" />
       <recent name="C:\ION_KOSA\spring_study\frontV" />
       <recent name="C:\ION_workspace\spring_study\spring_kuzuro" />
-      <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images\KIM\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\ION_KOSA\spring_study\BOOK\Spring_Vue_LIZARD" />
       <recent name="C:\ION_KOSA\spring_study\frontV\K\vue_learn" />
       <recent name="C:\ION_workspace\spring_study\Web_MiniPage\images\KIM" />
     </key>
@@ -119,7 +126,9 @@
       <workItem from="1631750217865" duration="4350000" />
       <workItem from="1632706350883" duration="2512000" />
       <workItem from="1632792839318" duration="4326000" />
-      <workItem from="1632798733832" duration="17601000" />
+      <workItem from="1632798733832" duration="18303000" />
+      <workItem from="1633148039584" duration="480000" />
+      <workItem from="1633148569538" duration="1773000" />
     </task>
     <servers />
   </component>
@@ -137,6 +146,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/frontV/clone_todo/vue-mytodo" />
+    </ignored-roots>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
