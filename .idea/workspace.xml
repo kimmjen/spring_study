@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/BOOK/Spring_Vue_LIZARD/README.md" afterDir="false" />
-    </list>
+    <list default="true" id="1034d06b-727c-4eaf-a584-5f977fdc99e0" name="변경" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,7 +119,7 @@
       <workItem from="1632792839318" duration="4326000" />
       <workItem from="1632798733832" duration="18303000" />
       <workItem from="1633148039584" duration="480000" />
-      <workItem from="1633148569538" duration="2340000" />
+      <workItem from="1633148569538" duration="2807000" />
     </task>
     <servers />
   </component>
