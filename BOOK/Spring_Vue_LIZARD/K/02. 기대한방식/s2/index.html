@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages App</title>
+
+    <!-- style start -->
+    <style>
+        [v-cloak] {display: none;}
+        body > div {width: 500px; margin: 0 auto}
+        textarea { width: 100%;}
+        ul {padding: 0 15px;}
+    </style>
+    <!-- style end -->
+</head>
+<body>
+    <div id="app" v-cloak>
+        <message-list :items="messages" @delete="deleteMessage"></message-list>
+        <ul>
+            <li v-for="message in messages"> <!-- v-for 지시자(directive): 메시지 미르슽 렌더링, 구문: <별칭> in <원본 데이터>, 자바스크립트의 for- loop 구문과 비슷하다고 볼수 있다. -->
+                {{ message.text }} - {{ message.createdAt }} <!-- 이중 중괄호구문, message 객체의 text, createaAt 프로퍼티 출력, createdAt 프로퍼티는 새로운 메시지를 저장할 때 추가하는 Date 객체 -->
+                <button @click="deleteMessage(message)">X</button> <!-- v-on:click = @click, click 리스너인 deleteMessage메소드를 연결, 메소드의 이름을 넣는대신 message 객체를 메소드에 전달하기 위한 인라인 구문을 사용 -->
+            </li>
+        </ul>
+        <form v-on:submit.prevent="addMessage"> <!-- v-on 지시자: 폼의 submit 이벤트에 이벤트 리스너를 부착, prevent는 브라우저가 실제로 폼을 제출하지 않도록 Vue.js에 event.preventDefault() 호출을 지시하는 수식어,
+                                                 addMessage는 폼의 submit 이벤트가 트리거가 될 때 호출되는 메소드,
+                                                 v-on으로 click과 mouseover와 같은 일반적인 DOM 이벤트 전부에 리스너를 부착,
+                                                 -->
+            <textarea v-model="newMessage" placeholder="Leave a message">
+            </textarea><!-- v-model 지시자로 textarea 요소와 data 객체의 new Message 프로퍼티 사이에 양방향 바인딩을 생성, textarea 요소의 값이 변경될 때마다 newMessage가 자동을 업데이트  -->
+            <div>
+                <!--<button v-bind:disabled="messages.length >= 10" type="submit">Add</button>-->
+                <button :disabled="addDisabled" type="submit">Add</button> <!-- v-bind를 줄여서 : 사용 -->
+            </div>
+            <!-- 메시지 10개 이상 되면 Add 버튼 비활성화, textarea 내용의 길이가 50자를 초과하는 경우 Add 버튼 비활성화 하도록 로직 변경 -->
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+    <script type="module">
+        import MessageList from "./components/MessageList";
+        let vm = new Vue ({ // vm: viewModel
+            el: '#app', // el: element, '#app': css선택자문자열, document.getElementById('app')과 같이 HTMLElement자체가 된다.
+            data: { // data 모델, 객체 리터럴 사용
+                messages: [], // 배열
+                newMessage: '' // 문자열
+            },
+            // options 객체: methods 프로퍼티는 단일 객체를 가지며, 이 객체에서 사용하는 모든 메소드
+            // 메소드내에서는 this로 데이터 객체의 프로퍼티에 접근하며, addMessage 메소드 내에서 객체 프로퍼티에 접근하는데, this.newMessage와 this.messages를 사용
+            // addMessage: function (event) {
+            //   // 로직은 여기에 작성한다.
+            // }
+            computed: { // data 객체 내의 프로퍼티와 달리 계산된 값
+                addDisabled () {
+                    return this.messages.length >= 10 || this.newMessage.length > 50; // 메시지 갯수 10제한, textarea 50자 제한
+                }
+            },
+            components: {
+                MessageList
+            },
+            methods: {
+                addMessage (event) {
+                    if (!this.newMessage) { return; }
+                        this.messages.push({
+                            text: this.newMessage, createdAt: new Date() });
+                        this.newMessage=''
+                },
+                deleteMessage (message) {
+                    this.messages.splice(this.messages.indexOf(message), 1) // Array.prototype.splice() 메소드로 messages 배열에서 선택된 메시지를 삭제.
+                }
+
+            }
+        });
+    </script>
+</body>
+</html>
