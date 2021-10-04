@@ -155,7 +155,7 @@ Vue.js의 강력함은 반응형데이터 바인딩 시스템으로부터 비롯
 
 데이터와 뷰를 동기화된 상태로 유지하는데 신경을 쓸 필요가 없다.
 
-![image-20211004141130937](C:\Users\박수오\AppData\Roaming\Typora\typora-user-images\image-20211004141130937.png)
+![image](https://user-images.githubusercontent.com/65153512/135800191-fc5caeb5-1cf0-483a-815f-cd5e21eebf4f.png)
 
 1. Vue.js는 렌더 와처를 생성해 render 함수의 의존 관계에 있는 프로퍼티를 수집한다
 2. 프로퍼티의 값을 변경할 때 마다 렌더 와처에 이를 통지하고,  
